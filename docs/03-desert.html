@@ -39,10 +39,10 @@
   body[data-palette="oasis"]  { --sand-0:#EFEEDF; --sand-1:#DDDDBE; --sand-2:#C9C99B; --umber:#1F2A1F; --terra:#3D6F4A; --olive:#5C7034; }
   body[data-palette="rose"]   { --sand-0:#F7E9E2; --sand-1:#ECD5C9; --sand-2:#DDB9A6; --umber:#3B201B; --terra:#A85040; --olive:#7B5A3C; }
 
-  /* Presque Elegante is the title face across all variants; pairings now differ on body sans only. */
-  body[data-type="marcellus"] { --display:"Presque Elegante","Marcellus", serif; --sans:"Inter Tight", sans-serif; }
-  body[data-type="fraunces"]  { --display:"Presque Elegante","Fraunces", serif; --sans:"Jost", sans-serif; }
-  body[data-type="tenor"]     { --display:"Presque Elegante","Marcellus", serif; --sans:"Inter Tight", sans-serif; }
+  body[data-type="presque"]   { --display:"Presque Elegante","Marcellus", serif; --sans:"Inter Tight", sans-serif; }
+  body[data-type="marcellus"] { --display:"Marcellus", serif; --sans:"Inter Tight", sans-serif; }
+  body[data-type="fraunces"]  { --display:"Fraunces", serif; --sans:"Jost", sans-serif; }
+  body[data-type="tenor"]     { --display:"Tenor Sans", serif; --sans:"Inter Tight", sans-serif; }
 
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
@@ -417,7 +417,7 @@
 
 </style>
 </head>
-<body data-palette="sand" data-type="marcellus" data-hero="duo">
+<body data-palette="sand" data-type="presque" data-hero="duo">
 
 <div class="switcher">
   <div class="row">
@@ -819,7 +819,7 @@
 <script type="text/babel">
   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     "palette": "rose",
-    "typePair": "marcellus",
+    "typePair": "presque",
     "hero": "duo"
   }/*EDITMODE-END*/;
   function DesertTweaks(){
@@ -837,7 +837,7 @@
           onChange={(v)=>setTweak('palette', v)} />
         <TweakSection label="Typography" />
         <TweakRadio label="Pairing" value={t.typePair}
-          options={[{value:"marcellus",label:"Marcellus + Inter Tight"},{value:"fraunces",label:"Fraunces + Jost"},{value:"tenor",label:"Tenor Sans + Inter Tight"}]}
+          options={[{value:"presque",label:"Presque + Inter Tight"},{value:"marcellus",label:"Marcellus + Inter Tight"},{value:"fraunces",label:"Fraunces + Jost"},{value:"tenor",label:"Tenor Sans + Inter Tight"}]}
           onChange={(v)=>setTweak('typePair', v)} />
         <TweakSection label="Hero" />
         <TweakRadio label="Composition" value={t.hero}

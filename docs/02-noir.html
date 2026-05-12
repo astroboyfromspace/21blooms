@@ -37,10 +37,10 @@
   body[data-palette="wine"]    { --bg:#120A0C; --bg-2:#1A0F11; --surface:#221316; --champ:#C57A6E; --champ-2:#E6B5A7; }
   body[data-palette="forest"]  { --bg:#0B0F0C; --bg-2:#101713; --surface:#141C17; --champ:#B7C09A; --champ-2:#D7DEC1; }
 
-  /* Presque Elegante is the title face across all variants; pairings now differ on body sans only. */
-  body[data-type="bodoni"]   { --display:"Presque Elegante","Bodoni Moda", serif; --sans:"Manrope", sans-serif; }
-  body[data-type="italiana"] { --display:"Presque Elegante","Italiana", serif; --sans:"Jost", sans-serif; }
-  body[data-type="jost"]     { --display:"Presque Elegante","Bodoni Moda", serif; --sans:"Manrope", sans-serif; }
+  body[data-type="presque"]  { --display:"Presque Elegante","Bodoni Moda", serif; --sans:"Manrope", sans-serif; }
+  body[data-type="bodoni"]   { --display:"Bodoni Moda","Bodoni 72", serif; --sans:"Manrope", sans-serif; }
+  body[data-type="italiana"] { --display:"Italiana", serif; --sans:"Jost", sans-serif; }
+  body[data-type="jost"]     { --display:"Jost", sans-serif; --sans:"Manrope", sans-serif; }
 
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
@@ -405,7 +405,7 @@
 
 </style>
 </head>
-<body data-palette="onyx" data-type="bodoni" data-hero="stage">
+<body data-palette="onyx" data-type="presque" data-hero="stage">
 
 <div class="switcher">
   <div class="row">
@@ -844,7 +844,7 @@
 <script type="text/babel">
   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     "palette": "onyx",
-    "typePair": "bodoni",
+    "typePair": "presque",
     "hero": "stage"
   }/*EDITMODE-END*/;
   function NoirTweaks(){
@@ -862,7 +862,7 @@
           onChange={(v)=>setTweak('palette', v)} />
         <TweakSection label="Typography" />
         <TweakRadio label="Pairing" value={t.typePair}
-          options={[{value:"bodoni",label:"Bodoni + Manrope"},{value:"italiana",label:"Italiana + Jost"},{value:"jost",label:"Jost · sans only"}]}
+          options={[{value:"presque",label:"Presque + Manrope"},{value:"bodoni",label:"Bodoni + Manrope"},{value:"italiana",label:"Italiana + Jost"},{value:"jost",label:"Jost · sans only"}]}
           onChange={(v)=>setTweak('typePair', v)} />
         <TweakSection label="Hero" />
         <TweakRadio label="Layout" value={t.hero}

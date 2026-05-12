@@ -38,10 +38,11 @@
   body[data-palette="rose"] { --bg:#F2E8E3; --bg-2:#E8D9D1; --ink:#1F1717; --paper:#FBF4EF; --accent:#7B3B3B; --accent-2:#A78268; }
   body[data-palette="green"]{ --bg:#E6E8DD; --bg-2:#D7DAC8; --ink:#1B1F18; --paper:#F2F3EA; --accent:#2F4030; --accent-2:#B8825A; }
 
-  /* type pairing swaps — Presque Elegante is the title face across all variants; pairings now differ on body sans only. */
-  body[data-type="cormorant"] { --display: "Presque Elegante", "Cormorant", serif; --sans: "DM Sans", sans-serif; }
-  body[data-type="tenor"]     { --display: "Presque Elegante", "Tenor Sans", serif; --sans: "Jost", sans-serif; }
-  body[data-type="jost"]      { --display: "Presque Elegante", "Cormorant", serif;  --sans: "DM Sans", sans-serif; }
+  /* type pairing swaps */
+  body[data-type="presque"]   { --display: "Presque Elegante", "Cormorant", serif; --sans: "DM Sans", sans-serif; }
+  body[data-type="cormorant"] { --display: "Cormorant", "Cormorant Garamond", serif; --sans: "DM Sans", sans-serif; }
+  body[data-type="tenor"]     { --display: "Tenor Sans", serif; --sans: "Jost", sans-serif; }
+  body[data-type="jost"]      { --display: "Jost", sans-serif;  --sans: "DM Sans", sans-serif; }
 
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
@@ -432,7 +433,7 @@
   .ink-rust{color:var(--accent-2)}
 </style>
 </head>
-<body data-palette="bone" data-type="cormorant" data-hero="split">
+<body data-palette="bone" data-type="presque" data-hero="split">
 
 <!-- Concept switcher (sits above main nav) -->
 <div class="switcher" data-comment-anchor="switcher">
@@ -830,7 +831,7 @@
 <script type="text/babel">
   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     "palette": "bone",
-    "typePair": "cormorant",
+    "typePair": "presque",
     "hero": "split"
   }/*EDITMODE-END*/;
 
@@ -850,7 +851,7 @@
           onChange={(v)=>setTweak('palette', v)} />
         <TweakSection label="Typography" />
         <TweakRadio label="Pairing" value={t.typePair}
-          options={[{value:"cormorant",label:"Cormorant + DM Sans"},{value:"tenor",label:"Tenor Sans + Jost"},{value:"jost",label:"Jost · sans only"}]}
+          options={[{value:"presque",label:"Presque + DM Sans"},{value:"cormorant",label:"Cormorant + DM Sans"},{value:"tenor",label:"Tenor Sans + Jost"},{value:"jost",label:"Jost · sans only"}]}
           onChange={(v)=>setTweak('typePair', v)} />
         <TweakSection label="Hero layout" />
         <TweakRadio label="Composition" value={t.hero}
