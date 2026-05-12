@@ -8,6 +8,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Italiana&family=Jost:wght@300;400;500&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
 <style>
+  /* Custom display face — Presque Elegante (Typebae). */
+  @font-face{
+    font-family:"Presque Elegante";
+    src:url("fonts/PresqueElegante.otf") format("opentype");
+    font-weight:400;
+    font-style:normal;
+    font-display:swap;
+  }
+
   :root{
     --bg:#0C0B0A;
     --bg-2:#16140F;
@@ -19,7 +28,7 @@
     --ink-2:#B3A98F;
     --ink-3:#7A7160;
     --rule:rgba(237,230,213,.10);
-    --display:"Bodoni Moda","Bodoni 72", serif;
+    --display:"Presque Elegante","Bodoni Moda","Bodoni 72", serif;
     --sans:"Manrope", system-ui, sans-serif;
     --mono:"JetBrains Mono", ui-monospace, monospace;
   }
@@ -28,9 +37,10 @@
   body[data-palette="wine"]    { --bg:#120A0C; --bg-2:#1A0F11; --surface:#221316; --champ:#C57A6E; --champ-2:#E6B5A7; }
   body[data-palette="forest"]  { --bg:#0B0F0C; --bg-2:#101713; --surface:#141C17; --champ:#B7C09A; --champ-2:#D7DEC1; }
 
-  body[data-type="bodoni"]   { --display:"Bodoni Moda","Bodoni 72", serif; --sans:"Manrope", sans-serif; }
-  body[data-type="italiana"] { --display:"Italiana", serif; --sans:"Jost", sans-serif; }
-  body[data-type="jost"]     { --display:"Jost", sans-serif; --sans:"Manrope", sans-serif; }
+  /* Presque Elegante is the title face across all variants; pairings now differ on body sans only. */
+  body[data-type="bodoni"]   { --display:"Presque Elegante","Bodoni Moda", serif; --sans:"Manrope", sans-serif; }
+  body[data-type="italiana"] { --display:"Presque Elegante","Italiana", serif; --sans:"Jost", sans-serif; }
+  body[data-type="jost"]     { --display:"Presque Elegante","Bodoni Moda", serif; --sans:"Manrope", sans-serif; }
 
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}

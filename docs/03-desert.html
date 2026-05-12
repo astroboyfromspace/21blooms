@@ -8,6 +8,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Tenor+Sans&family=Inter+Tight:wght@300;400;500;600&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
 <style>
+  /* Custom display face — Presque Elegante (Typebae). */
+  @font-face{
+    font-family:"Presque Elegante";
+    src:url("fonts/PresqueElegante.otf") format("opentype");
+    font-weight:400;
+    font-style:normal;
+    font-display:swap;
+  }
+
   :root{
     --sand-0:#F6EFE0;
     --sand-1:#EDE1CB;
@@ -21,7 +30,7 @@
     --olive:#7B7A3E;
     --rule:rgba(58,42,31,.16);
     --rule-soft:rgba(58,42,31,.08);
-    --display:"Marcellus","Times New Roman",serif;
+    --display:"Presque Elegante","Marcellus","Times New Roman",serif;
     --sans:"Inter Tight", system-ui, sans-serif;
     --mono:"JetBrains Mono", ui-monospace, monospace;
   }
@@ -30,9 +39,10 @@
   body[data-palette="oasis"]  { --sand-0:#EFEEDF; --sand-1:#DDDDBE; --sand-2:#C9C99B; --umber:#1F2A1F; --terra:#3D6F4A; --olive:#5C7034; }
   body[data-palette="rose"]   { --sand-0:#F7E9E2; --sand-1:#ECD5C9; --sand-2:#DDB9A6; --umber:#3B201B; --terra:#A85040; --olive:#7B5A3C; }
 
-  body[data-type="marcellus"] { --display:"Marcellus", serif; --sans:"Inter Tight", sans-serif; }
-  body[data-type="fraunces"]  { --display:"Fraunces", serif; --sans:"Jost", sans-serif; }
-  body[data-type="tenor"]     { --display:"Tenor Sans", serif; --sans:"Inter Tight", sans-serif; }
+  /* Presque Elegante is the title face across all variants; pairings now differ on body sans only. */
+  body[data-type="marcellus"] { --display:"Presque Elegante","Marcellus", serif; --sans:"Inter Tight", sans-serif; }
+  body[data-type="fraunces"]  { --display:"Presque Elegante","Fraunces", serif; --sans:"Jost", sans-serif; }
+  body[data-type="tenor"]     { --display:"Presque Elegante","Marcellus", serif; --sans:"Inter Tight", sans-serif; }
 
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}

@@ -8,6 +8,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Tenor+Sans&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
 <style>
+  /* Custom display face — Presque Elegante (Typebae). */
+  @font-face{
+    font-family:"Presque Elegante";
+    src:url("fonts/PresqueElegante.otf") format("opentype");
+    font-weight:400;
+    font-style:normal;
+    font-display:swap;
+  }
+
   /* ---------- Tokens ---------- */
   :root{
     --bg: #F4EFE4;
@@ -19,7 +28,7 @@
     --accent: #4C5740;        /* sage */
     --accent-2: #C25E4F;       /* rust kiss */
     --paper: #FBF8F1;
-    --display: "Cormorant", "Cormorant Garamond", serif;
+    --display: "Presque Elegante", "Cormorant", "Cormorant Garamond", serif;
     --sans: "DM Sans", "Helvetica Neue", system-ui, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, monospace;
   }
@@ -29,10 +38,10 @@
   body[data-palette="rose"] { --bg:#F2E8E3; --bg-2:#E8D9D1; --ink:#1F1717; --paper:#FBF4EF; --accent:#7B3B3B; --accent-2:#A78268; }
   body[data-palette="green"]{ --bg:#E6E8DD; --bg-2:#D7DAC8; --ink:#1B1F18; --paper:#F2F3EA; --accent:#2F4030; --accent-2:#B8825A; }
 
-  /* type pairing swaps */
-  body[data-type="cormorant"] { --display: "Cormorant", "Cormorant Garamond", serif; --sans: "DM Sans", sans-serif; }
-  body[data-type="tenor"]     { --display: "Tenor Sans", serif; --sans: "Jost", sans-serif; }
-  body[data-type="jost"]      { --display: "Jost", sans-serif;  --sans: "DM Sans", sans-serif; }
+  /* type pairing swaps — Presque Elegante is the title face across all variants; pairings now differ on body sans only. */
+  body[data-type="cormorant"] { --display: "Presque Elegante", "Cormorant", serif; --sans: "DM Sans", sans-serif; }
+  body[data-type="tenor"]     { --display: "Presque Elegante", "Tenor Sans", serif; --sans: "Jost", sans-serif; }
+  body[data-type="jost"]      { --display: "Presque Elegante", "Cormorant", serif;  --sans: "DM Sans", sans-serif; }
 
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
