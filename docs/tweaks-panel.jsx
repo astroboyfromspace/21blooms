@@ -184,7 +184,10 @@ function useTweaks(defaults) {
 // flips off in lockstep; the host echoes __deactivate_edit_mode back which
 // is what actually hides the panel.
 function TweaksPanel({ title = 'Tweaks', noDeckControls = false, children }) {
-  const [open, setOpen] = React.useState(false);
+  // Standalone (no Claude Design host wrapping us) — open by default so the
+  // panel is discoverable when the page is just served as static HTML.
+  const standalone = typeof window !== 'undefined' && window.parent === window;
+  const [open, setOpen] = React.useState(standalone);
   const dragRef = React.useRef(null);
   // Auto-inject a rail toggle when a <deck-stage> is on the page. The
   // toggle drives the deck's per-viewer _railVisible via window message;
@@ -286,7 +289,34 @@ function TweaksPanel({ title = 'Tweaks', noDeckControls = false, children }) {
     window.addEventListener('mouseup', up);
   };
 
-  if (!open) return null;
+  if (!open) {
+    // Standalone: render a small reopen button so the panel is recoverable
+    // after dismissing. Inside a host, stay invisible — the host's toolbar
+    // owns reopening via __activate_edit_mode.
+    if (!standalone) return null;
+    return (
+      <>
+        <style>{__TWEAKS_STYLE}{`
+          .twk-reopen{position:fixed;right:16px;bottom:16px;z-index:2147483646;
+            appearance:none;border:.5px solid rgba(0,0,0,.12);
+            background:rgba(250,249,247,.85);color:#29261b;
+            -webkit-backdrop-filter:blur(20px) saturate(160%);
+            backdrop-filter:blur(20px) saturate(160%);
+            font:11.5px/1 ui-sans-serif,system-ui,-apple-system,sans-serif;
+            font-weight:500;letter-spacing:.02em;
+            padding:10px 14px;border-radius:999px;cursor:pointer;
+            box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 8px 24px rgba(0,0,0,.14)}
+          .twk-reopen:hover{background:rgba(255,255,255,.95)}
+          .twk-reopen i{display:inline-block;width:6px;height:6px;border-radius:50%;
+            background:#C25E4F;margin-right:8px;vertical-align:middle}
+        `}</style>
+        <button type="button" className="twk-reopen"
+                onClick={() => setOpen(true)} aria-label="Open tweaks panel">
+          <i /> Tweaks
+        </button>
+      </>
+    );
+  }
   return (
     <>
       <style>{__TWEAKS_STYLE}</style>
