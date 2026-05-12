@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>21Bloom — Homepage explorations</title>
+<meta name="viewport" content="width=1440" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#EDE7D8;
+    --bg-2:#E2DAC7;
+    --ink:#1A1815;
+    --ink-2:#5B564C;
+    --ink-3:#8A8579;
+    --rule:rgba(26,24,21,.16);
+    --accent:#C25E4F;
+    --display:"Cormorant", serif;
+    --sans:"DM Sans", system-ui, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+
+  .head{
+    padding:40px 48px 28px;border-bottom:1px solid var(--rule);
+    display:flex;justify-content:space-between;align-items:flex-end;gap:48px;
+  }
+  .head .brand{font-family:var(--display);font-size:44px;letter-spacing:.01em;font-weight:400;line-height:1}
+  .head .brand small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
+  .head .meta{
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);text-align:right;line-height:1.8;
+  }
+  .head .meta b{color:var(--ink);font-family:var(--display);font-size:20px;letter-spacing:0;font-weight:400;text-transform:none;display:block;margin-bottom:4px}
+
+  .intro{padding:64px 48px 24px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+  .intro .lead{font-family:var(--display);font-size:64px;line-height:1;font-weight:300;letter-spacing:-.012em;margin:0;max-width:18ch}
+  .intro .lead em{font-style:italic;color:var(--accent)}
+  .intro .body p{margin:0 0 14px;color:var(--ink-2);font-size:16px;line-height:1.6;max-width:50ch}
+  .intro .body .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+
+  .grid{padding:48px 48px 64px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:#FBF8F1;border:1px solid var(--rule);
+    display:flex;flex-direction:column;
+    overflow:hidden;border-radius:2px;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 30px 80px -40px rgba(26,24,21,.4)}
+
+  .card .top{
+    padding:18px 22px;display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
+    border-bottom:1px solid var(--rule);
+  }
+  .card .top b{color:var(--ink)}
+  .card .frame{position:relative;aspect-ratio:5/4;overflow:hidden;border-bottom:1px solid var(--rule)}
+  .card .frame iframe{
+    position:absolute;left:0;top:0;
+    width:1440px;height:1152px;
+    transform:scale(.43);transform-origin:top left;
+    border:0;pointer-events:none;
+  }
+  .card .frame .scrim{
+    position:absolute;inset:0;background:transparent;
+  }
+
+  .card .body{padding:24px 22px 28px;flex:1;display:flex;flex-direction:column;gap:14px}
+  .card h2{font-family:var(--display);font-size:38px;line-height:1;letter-spacing:-.005em;margin:0;font-weight:400}
+  .card h2 em{font-style:italic;color:var(--accent)}
+  .card .sub{color:var(--ink-2);font-size:14.5px;line-height:1.55;margin:0;max-width:38ch}
+
+  .card .specs{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border-top:1px solid var(--rule);
+    margin-top:6px;
+  }
+  .card .specs > div{
+    padding:12px 0;display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-2);
+    border-bottom:1px solid var(--rule);
+  }
+  .card .specs > div:nth-child(odd){padding-right:14px;border-right:1px solid var(--rule)}
+  .card .specs > div:nth-child(even){padding-left:14px}
+  .card .specs span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase}
+  .card .specs b{color:var(--ink);font-weight:500;font-family:var(--sans)}
+
+  .card .swatches{display:flex;gap:6px;margin-top:4px}
+  .card .swatches span{width:22px;height:22px;border-radius:50%;border:1px solid var(--rule)}
+
+  .card .open{
+    margin-top:4px;display:inline-flex;align-items:center;justify-content:space-between;
+    padding:14px 18px;border:1px solid var(--ink);border-radius:999px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  }
+  .card.dark .open{background:var(--ink);color:#EDE6D5}
+
+  /* per-card accent */
+  .card.editorial { background:#FBF8F1 }
+  .card.editorial .top b, .card.editorial h2 em { color:#4C5740 }
+  .card.editorial .swatches span:nth-child(1){background:#F4EFE4}
+  .card.editorial .swatches span:nth-child(2){background:#ECE5D5}
+  .card.editorial .swatches span:nth-child(3){background:#4C5740}
+  .card.editorial .swatches span:nth-child(4){background:#C25E4F}
+  .card.editorial .swatches span:nth-child(5){background:#1A1815}
+
+  .card.noir { background:#161310; color:#EDE6D5;border-color:rgba(237,230,213,.14) }
+  .card.noir .top { color:#7A7160;border-color:rgba(237,230,213,.14) }
+  .card.noir .top b{color:#C7A878}
+  .card.noir h2{color:#EDE6D5}
+  .card.noir h2 em{color:#C7A878}
+  .card.noir .sub{color:#B3A98F}
+  .card.noir .specs{border-color:rgba(237,230,213,.14)}
+  .card.noir .specs > div{border-color:rgba(237,230,213,.10);color:#B3A98F}
+  .card.noir .specs > div:nth-child(odd){border-right-color:rgba(237,230,213,.10)}
+  .card.noir .specs span{color:#7A7160}
+  .card.noir .specs b{color:#EDE6D5}
+  .card.noir .swatches span{border-color:rgba(237,230,213,.2)}
+  .card.noir .swatches span:nth-child(1){background:#0C0B0A}
+  .card.noir .swatches span:nth-child(2){background:#1B1813}
+  .card.noir .swatches span:nth-child(3){background:#C7A878}
+  .card.noir .swatches span:nth-child(4){background:#E5CFA1}
+  .card.noir .swatches span:nth-child(5){background:#EDE6D5}
+  .card.noir .open{border-color:#C7A878;background:#C7A878;color:#1A1209}
+  .card.noir .frame{border-color:rgba(237,230,213,.14)}
+
+  .card.desert { background:#F6EFE0 }
+  .card.desert .top b{color:#C2693F}
+  .card.desert h2 em{color:#C2693F}
+  .card.desert .swatches span:nth-child(1){background:#F6EFE0}
+  .card.desert .swatches span:nth-child(2){background:#EDE1CB}
+  .card.desert .swatches span:nth-child(3){background:#C2693F}
+  .card.desert .swatches span:nth-child(4){background:#7B7A3E}
+  .card.desert .swatches span:nth-child(5){background:#3A2A1F}
+  .card.desert .open{background:#C2693F;color:#FBF5E9;border-color:#C2693F}
+
+  /* footer */
+  .foot{
+    padding:32px 48px;border-top:1px solid var(--rule);
+    display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
+  }
+
+  .legend{
+    padding:0 48px 16px;display:grid;grid-template-columns:repeat(4,auto);gap:36px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+  }
+  .legend > div{display:flex;gap:10px;align-items:center}
+  .legend b{color:var(--ink);font-family:var(--display);font-size:18px;text-transform:none;letter-spacing:0;font-weight:400}
+
+  .note{
+    padding:14px 22px;background:var(--bg-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+    text-align:center;
+  }
+
+  /* Hover-only iframe loading */
+  .card .frame .placeholder{
+    position:absolute;inset:0;display:grid;place-items:center;
+    font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);
+    background:repeating-linear-gradient(135deg, rgba(26,24,21,.05) 0 1px, transparent 1px 14px);
+  }
+</style>
+</head>
+<body>
+
+<header class="head">
+  <div class="brand">21Bloom<small>Atelier · Dubai</small></div>
+  <div class="meta">
+    <b>Homepage explorations</b>
+    Three directions · May 2026<br>
+    For: founder, marketing<br>
+    Designer: studio
+  </div>
+</header>
+
+<section class="intro">
+  <h1 class="lead">Three ways the home page<br>could <em>feel.</em></h1>
+  <div class="body">
+    <span class="tag">— A short note from the studio —</span>
+    <p>Each concept hits the same brief — same-day Dubai gifting, premium feel, the four sections you asked for — but pushes a different emotional register. Editorial reads like a quiet magazine; Noir leans into after-dark indulgence; Desert is the warmest, most Gulf-rooted of the three.</p>
+    <p>Every concept ships with three palette swaps, three type pairings and three hero compositions you can toggle live via the Tweaks panel — so a final direction can be a remix of any two.</p>
+  </div>
+</section>
+
+<div class="legend">
+  <div>Concept count · <b>03</b></div>
+  <div>Hero variants each · <b>03</b></div>
+  <div>Palette swaps each · <b>04</b></div>
+  <div>Type pairings each · <b>03</b></div>
+</div>
+
+<section class="grid">
+
+  <!-- ============ 01 EDITORIAL ============ -->
+  <a class="card editorial" href="01-editorial.html">
+    <div class="top"><span>Concept 01</span><b>Editorial</b></div>
+    <div class="frame">
+      <iframe src="01-editorial.html" scrolling="no" loading="lazy" tabindex="-1"></iframe>
+      <div class="scrim"></div>
+    </div>
+    <div class="body">
+      <h2>Editorial — <em>quiet</em><br>like a magazine.</h2>
+      <p class="sub">Ivory paper stock, ink black type, a single warm accent. Serifs do the heavy lifting; everything else gets out of the way.</p>
+      <div class="swatches" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="specs">
+        <div><span>Mood</span><b>Aesop · Apartamento</b></div>
+        <div><span>Type</span><b>Cormorant · DM Sans</b></div>
+        <div><span>Palette</span><b>Bone + sage</b></div>
+        <div><span>Hero</span><b>Type-led split</b></div>
+      </div>
+      <span class="open">Open concept 01 <span>→</span></span>
+    </div>
+  </a>
+
+  <!-- ============ 02 NOIR ============ -->
+  <a class="card noir dark" href="02-noir.html">
+    <div class="top"><span>Concept 02</span><b>Noir</b></div>
+    <div class="frame">
+      <iframe src="02-noir.html" scrolling="no" loading="lazy" tabindex="-1"></iframe>
+      <div class="scrim"></div>
+    </div>
+    <div class="body">
+      <h2>Noir — Dubai's<br><em>after-hours</em> florist.</h2>
+      <p class="sub">Black canvas, champagne italics, edition-of-60 stamps. Reads like a tasting menu you receive at midnight.</p>
+      <div class="swatches" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="specs">
+        <div><span>Mood</span><b>Quiet luxury · midnight</b></div>
+        <div><span>Type</span><b>Bodoni · Manrope</b></div>
+        <div><span>Palette</span><b>Onyx + champagne</b></div>
+        <div><span>Hero</span><b>Stage · poster · vault</b></div>
+      </div>
+      <span class="open">Open concept 02 <span>→</span></span>
+    </div>
+  </a>
+
+  <!-- ============ 03 DESERT ============ -->
+  <a class="card desert" href="03-desert.html">
+    <div class="top"><span>Concept 03</span><b>Desert</b></div>
+    <div class="frame">
+      <iframe src="03-desert.html" scrolling="no" loading="lazy" tabindex="-1"></iframe>
+      <div class="scrim"></div>
+    </div>
+    <div class="body">
+      <h2>Desert — warm,<br><em>Gulf-rooted</em>.</h2>
+      <p class="sub">Sand, cream and terracotta. Layered images, a postcard hero, a hand-written sign-off. The most Dubai-of-place of the three.</p>
+      <div class="swatches" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="specs">
+        <div><span>Mood</span><b>Atelier · in season</b></div>
+        <div><span>Type</span><b>Marcellus · Inter Tight</b></div>
+        <div><span>Palette</span><b>Sand + terracotta</b></div>
+        <div><span>Hero</span><b>Duo · circle · postcard</b></div>
+      </div>
+      <span class="open">Open concept 03 <span>→</span></span>
+    </div>
+  </a>
+
+</section>
+
+<div class="note">Each concept has its own Tweaks panel — toggle palette, typography and hero layout from inside.</div>
+
+<footer class="foot">
+  <span>© 2026 21Bloom · Dubai</span>
+  <span>Three homepage concepts · May 2026</span>
+</footer>
+
+</body>
+</html>
