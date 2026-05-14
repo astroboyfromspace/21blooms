@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>21Bloom — Desert</title>
-<meta name="viewport" content="width=1440" />
+<title>No.21 Blooms — Desert</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Tenor+Sans&family=Inter+Tight:wght@300;400;500;600&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Tenor+Sans&family=Inter+Tight:wght@300;400;500;600&family=Jost:wght@300;400;500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
 <style>
   /* Custom display face — Presque Elegante (Typebae). */
   @font-face{
@@ -16,7 +16,6 @@
     font-style:normal;
     font-display:swap;
   }
-
   :root{
     --sand-0:#F6EFE0;
     --sand-1:#EDE1CB;
@@ -30,7 +29,7 @@
     --olive:#7B7A3E;
     --rule:rgba(58,42,31,.16);
     --rule-soft:rgba(58,42,31,.08);
-    --display:"Presque Elegante","Marcellus","Times New Roman",serif;
+    --display:"Marcellus","Times New Roman",serif;
     --sans:"Inter Tight", system-ui, sans-serif;
     --mono:"JetBrains Mono", ui-monospace, monospace;
   }
@@ -39,10 +38,10 @@
   body[data-palette="oasis"]  { --sand-0:#EFEEDF; --sand-1:#DDDDBE; --sand-2:#C9C99B; --umber:#1F2A1F; --terra:#3D6F4A; --olive:#5C7034; }
   body[data-palette="rose"]   { --sand-0:#F7E9E2; --sand-1:#ECD5C9; --sand-2:#DDB9A6; --umber:#3B201B; --terra:#A85040; --olive:#7B5A3C; }
 
-  body[data-type="presque"]   { --display:"Presque Elegante","Marcellus", serif; --sans:"Inter Tight", sans-serif; }
   body[data-type="marcellus"] { --display:"Marcellus", serif; --sans:"Inter Tight", sans-serif; }
   body[data-type="fraunces"]  { --display:"Fraunces", serif; --sans:"Jost", sans-serif; }
   body[data-type="tenor"]     { --display:"Tenor Sans", serif; --sans:"Inter Tight", sans-serif; }
+  body[data-type="presque"]   { --display:"Presque Elegante","Marcellus", serif; --sans:"DM Sans", system-ui, sans-serif; }
 
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
@@ -78,16 +77,12 @@
     padding:24px 40px 22px;
     border-bottom:1px solid var(--rule);
   }
-  .brand{
-    display:inline-flex;align-items:baseline;gap:10px;
-    font-family:var(--display);font-size:32px;letter-spacing:.005em;color:var(--umber);
-  }
-  .brand .glyph{
-    display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;
-    background:var(--terra);color:var(--cream);font-family:var(--display);font-size:18px;
-    transform:translateY(2px);
-  }
-  .brand small{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--umber-3)}
+  .brand{display:inline-flex;align-items:center;color:var(--umber)}
+  .brand img{height:56px;width:auto;display:block}
+  body[data-palette="oasis"] .brand img,
+  body[data-palette="dune"]  .brand img,
+  body[data-palette="rose"]  .brand img,
+  body[data-palette="sand"]  .brand img{filter:none}
   .nav .links{display:flex;gap:32px;font-size:14px;justify-self:center;color:var(--umber-2)}
   .nav .links a:hover{color:var(--terra)}
   .nav .right{display:flex;gap:24px;align-items:center;font-size:13.5px;color:var(--umber-2)}
@@ -170,12 +165,15 @@
   .hero-duo .imgs{position:relative;height:620px}
   .hero-duo .imgs .a{
     position:absolute;left:0;top:0;width:78%;aspect-ratio:4/5;
-    box-shadow:0 30px 80px -30px rgba(58,42,31,.4);
+    box-shadow:0 30px 80px -30px rgba(58,42,31,.4);overflow:hidden;
   }
   .hero-duo .imgs .b{
     position:absolute;right:0;bottom:0;width:54%;aspect-ratio:1/1.05;
-    box-shadow:0 30px 80px -30px rgba(58,42,31,.4);
+    box-shadow:0 30px 80px -30px rgba(58,42,31,.4);overflow:hidden;
+    border:6px solid var(--cream);
   }
+  .hero-duo .imgs .a img,
+  .hero-duo .imgs .b img{width:100%;height:100%;object-fit:cover;display:block}
   .hero-duo .imgs .stamp{
     position:absolute;right:6%;top:8%;
     width:140px;height:140px;border-radius:50%;
@@ -193,6 +191,7 @@
     border-radius:50%;overflow:hidden;border:1px solid var(--rule);
   }
   .hero-circle .frame .ph{position:absolute;inset:0}
+  .hero-circle .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .hero-circle .corner-l, .hero-circle .corner-r{
     position:absolute;top:42%;width:280px;
     font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--umber-3);line-height:1.6;
@@ -233,8 +232,9 @@
     font-family:var(--display);font-style:italic;font-size:32px;color:var(--terra);margin-top:14px;
   }
   .hero-postcard .card .cta-row{display:flex;gap:14px;margin-top:28px}
-  .hero-postcard .image{position:relative;aspect-ratio:4/5}
+  .hero-postcard .image{position:relative;aspect-ratio:4/5;overflow:hidden}
   .hero-postcard .image .ph{position:absolute;inset:0}
+  .hero-postcard .image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .hero-postcard .image .tag{
     position:absolute;left:-12px;top:30px;background:var(--terra);color:var(--cream);
     padding:8px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
@@ -281,8 +281,9 @@
   .featured .price-row .num{font-family:var(--display);font-size:54px;line-height:1;color:var(--terra)}
 
   .featured .img-stack{position:relative;aspect-ratio:4/5}
-  .featured .img-stack .a{position:absolute;inset:0;border:1px solid var(--rule);box-shadow:0 30px 80px -30px rgba(58,42,31,.45)}
+  .featured .img-stack .a{position:absolute;inset:0;border:1px solid var(--rule);box-shadow:0 30px 80px -30px rgba(58,42,31,.45);overflow:hidden}
   .featured .img-stack .a .ph{position:absolute;inset:0}
+  .featured .img-stack .a img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
   .featured .img-stack .seal{
     position:absolute;left:-32px;bottom:48px;width:130px;height:130px;border-radius:50%;
     background:var(--cream);border:1px solid var(--umber);display:grid;place-items:center;text-align:center;
@@ -350,6 +351,65 @@
   .pcard .price small{display:block;font-family:var(--mono);font-size:10px;color:var(--umber-3);letter-spacing:.16em;margin-top:4px}
   .pcard .desc{font-size:13.5px;color:var(--umber-2);line-height:1.5;max-width:38ch}
 
+  /* ============ CONCIERGE BAND ============ */
+  .concierge{
+    padding:120px 40px;background:var(--sand-1);
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    position:relative;overflow:hidden;
+  }
+  .concierge::before{
+    content:"";position:absolute;left:-180px;top:-180px;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(closest-side, color-mix(in oklab, var(--terra) 14%, transparent), transparent);
+    pointer-events:none;
+  }
+  .concierge .grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative}
+  .concierge .lbl{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);
+    margin-bottom:16px;display:flex;align-items:center;gap:12px;
+  }
+  .concierge .lbl .line{flex:0 0 60px;height:1px;background:var(--terra)}
+  .concierge h3{
+    font-family:var(--display);font-weight:400;font-size:80px;line-height:.96;letter-spacing:-.012em;
+    margin:0 0 22px;color:var(--umber);
+  }
+  .concierge h3 em{font-style:italic;color:var(--terra)}
+  .concierge p{color:var(--umber-2);max-width:46ch;font-size:16.5px;line-height:1.65;margin:0 0 32px}
+  .concierge .wa{
+    display:inline-flex;align-items:center;gap:14px;
+    border:1px solid var(--umber);padding:18px 26px;border-radius:999px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber);
+    background:var(--cream);
+  }
+  .concierge .wa .dot{
+    width:8px;height:8px;border-radius:50%;background:#5A8C5A;
+    box-shadow:0 0 0 4px rgba(90,140,90,.18);
+  }
+  .concierge .wa b{
+    font-family:var(--display);font-size:20px;font-style:italic;letter-spacing:0;
+    color:var(--terra);font-weight:400;text-transform:none;
+  }
+  .concierge .visual{position:relative;aspect-ratio:5/4;border:1px solid var(--rule);box-shadow:0 30px 80px -30px rgba(58,42,31,.4)}
+  .concierge .visual > .ph{position:absolute;inset:0;border:0}
+  .concierge .chat{
+    position:absolute;right:18px;bottom:18px;left:28%;
+    background:var(--cream);border:1px solid var(--umber);padding:18px 22px;
+    font-size:14px;color:var(--umber);line-height:1.55;
+  }
+  .concierge .chat small{
+    display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--umber-3);margin-bottom:8px;
+  }
+  .concierge .stamp{
+    position:absolute;right:-18px;top:32px;width:130px;height:130px;border-radius:50%;
+    background:var(--cream);border:1px solid var(--umber);display:grid;place-items:center;text-align:center;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber);line-height:1.5;
+    transform:rotate(8deg);z-index:2;
+  }
+  .concierge .stamp b{
+    display:block;font-family:var(--display);font-size:26px;color:var(--terra);
+    font-weight:400;text-transform:none;letter-spacing:0;margin-bottom:2px;
+  }
+
   /* ============ TWO-UP STORY ============ */
   .story{
     padding:120px 40px;
@@ -415,13 +475,248 @@
   .foot-grid .news button{color:var(--terra);font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
   .foot-bottom{margin-top:48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(251,245,233,.5);position:relative}
 
+  /* Mobile nav toggle (hidden on desktop) */
+  .nav-toggle{display:none;width:42px;height:42px;border:1px solid var(--rule);border-radius:50%;align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer}
+  .nav-toggle span{display:block;width:18px;height:1.5px;background:var(--umber)}
+  body[data-menu="open"] .nav .links{display:flex}
+
+  /* ============================================ */
+  /* TABLET  ≤ 1100px                             */
+  /* ============================================ */
+  @media (max-width: 1100px){
+    .switcher .row{padding:10px 24px}
+    .switcher .tabs{gap:14px;font-size:10px}
+
+    .nav{grid-template-columns:auto 1fr auto;gap:24px;padding:20px 24px 18px}
+    .nav .links{gap:22px;font-size:13px}
+    .brand img{height:48px}
+
+    /* Hero · Duo */
+    .hero{padding:0 24px}
+    .hero-duo{grid-template-columns:1fr 1fr;gap:40px;padding:56px 0 72px}
+    .hero-duo h1{font-size:84px}
+    .hero-duo p.lede{font-size:16px;margin-bottom:28px}
+    .hero-duo .imgs{height:520px}
+    .hero-duo .imgs .stamp{width:110px;height:110px}
+    .hero-duo .imgs .stamp b{font-size:24px}
+    .hero-duo .meta-row{gap:24px}
+    .hero-duo .meta-row .v{font-size:20px}
+
+    /* Hero · Circle */
+    .hero-circle{padding:48px 0 64px}
+    .hero-circle .frame{width:520px;height:520px}
+    .hero-circle h1{font-size:78px}
+    .hero-circle .corner-l,.hero-circle .corner-r{display:none}
+
+    /* Hero · Postcard */
+    .hero-postcard{grid-template-columns:1fr 1fr;gap:24px;padding:32px 0 56px}
+    .hero-postcard .card{padding:32px}
+    .hero-postcard h1{font-size:60px}
+
+    .strip{padding:16px 24px;gap:24px;flex-wrap:wrap;font-size:10px}
+
+    .featured{padding:88px 24px}
+    .featured .inner{gap:48px}
+    .featured h2{font-size:64px}
+    .featured .price-row .num{font-size:42px}
+
+    .occasions{padding:88px 24px}
+    .occ-head{grid-template-columns:1fr;gap:24px}
+    .occ-head h2{font-size:56px}
+    .occ-rail{grid-template-columns:repeat(3,1fr)}
+
+    .best{padding:88px 24px}
+    .best-head h2{font-size:60px}
+    .best-grid{grid-template-columns:repeat(2,1fr);gap:28px}
+
+    .concierge{padding:88px 24px}
+    .concierge .grid{gap:48px}
+    .concierge h3{font-size:60px}
+
+    .story{padding:88px 24px;grid-template-columns:1fr 1fr;gap:48px}
+    .story h2{font-size:48px}
+
+    .press{padding:88px 24px}
+    .press h2{font-size:54px}
+    .press .logos{grid-template-columns:repeat(3,1fr)}
+    .press .logos div:nth-child(3){border-right:0}
+    .press .logos div:nth-child(n+4){border-top:1px solid var(--rule)}
+    .quotes{grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+    .quotes .quote-card:last-child{display:none}
+
+    footer{padding:72px 24px 28px}
+    .foot-headline{font-size:104px;margin-bottom:40px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:36px}
+  }
+
+  /* ============================================ */
+  /* MOBILE  ≤ 720px                              */
+  /* ============================================ */
+  @media (max-width: 720px){
+    body{font-size:14.5px}
+
+    /* Switcher: condense */
+    .switcher .row{flex-direction:column;align-items:flex-start;gap:8px;padding:10px 18px}
+    .switcher .tabs{gap:10px;font-size:9.5px;flex-wrap:wrap}
+    .switcher .tabs a{gap:5px}
+
+    /* Nav: brand left, toggle right */
+    .nav{grid-template-columns:1fr auto;gap:12px;padding:16px 18px 14px}
+    .nav .links{
+      display:none;
+      grid-column:1 / -1;
+      flex-direction:column;align-items:flex-start;gap:14px;
+      padding:8px 0 6px;font-size:15px;
+    }
+    body[data-menu="open"] .nav .links{display:flex}
+    .nav .right{gap:14px;font-size:12px}
+    .nav .right .pill{display:none}
+    .nav-toggle{display:flex}
+    .brand img{height:40px}
+
+    /* Hero · Duo — stack */
+    .hero{padding:0 18px}
+    .hero-duo{grid-template-columns:1fr;gap:36px;padding:32px 0 56px}
+    .hero-duo .eyebrow{margin-bottom:20px;font-size:10px;letter-spacing:.18em}
+    .hero-duo .eyebrow .glyph{width:32px;height:32px;font-size:15px}
+    .hero-duo h1{font-size:54px;margin-bottom:20px}
+    .hero-duo h1 .ul{border-bottom-width:2px;padding-bottom:3px}
+    .hero-duo p.lede{font-size:15.5px;margin-bottom:24px}
+    .hero-duo .cta-row{flex-wrap:wrap;gap:10px;margin-bottom:32px}
+    .btn{padding:12px 18px;font-size:12.5px}
+    .hero-duo .meta-row{grid-template-columns:1fr 1fr;gap:18px 24px;padding-top:18px;max-width:none}
+    .hero-duo .meta-row .v{font-size:18px}
+    .hero-duo .imgs{height:auto;display:grid;grid-template-columns:5fr 4fr;grid-template-rows:auto auto;gap:12px;position:relative}
+    .hero-duo .imgs .a,.hero-duo .imgs .b{position:relative;width:100%;left:auto;right:auto;top:auto;bottom:auto;aspect-ratio:4/5;box-shadow:0 16px 40px -20px rgba(58,42,31,.4)}
+    .hero-duo .imgs .a{grid-column:1 / 2;grid-row:1 / 3}
+    .hero-duo .imgs .b{grid-column:2 / 3;grid-row:2 / 3;aspect-ratio:1/1.05}
+    .hero-duo .imgs .stamp{
+      grid-column:2 / 3;grid-row:1 / 2;
+      position:relative;width:auto;height:auto;
+      transform:none;border-radius:8px;
+      padding:18px 14px;font-size:9px;
+      align-self:start;
+    }
+    .hero-duo .imgs .stamp b{font-size:22px}
+
+    /* Hero · Circle */
+    .hero-circle{padding:32px 0 48px}
+    .hero-circle .frame{width:88vw;height:88vw;max-width:520px;max-height:520px}
+    .hero-circle h1{font-size:48px;margin:24px 0 14px}
+    .hero-circle p{font-size:15.5px;padding:0 8px}
+    .hero-circle .cta-row{flex-direction:column;gap:10px;align-items:stretch;padding:0 32px}
+
+    /* Hero · Postcard */
+    .hero-postcard{grid-template-columns:1fr;gap:20px;padding:24px 0 48px}
+    .hero-postcard .card{padding:24px}
+    .hero-postcard .card::before{left:14px;right:14px;top:14px;bottom:14px}
+    .hero-postcard h1{font-size:44px;margin:18px 0 12px}
+    .hero-postcard .card .top .stamp{width:54px;height:64px;font-size:8px}
+    .hero-postcard .card .cta-row{flex-wrap:wrap;gap:10px;margin-top:20px}
+
+    /* Strip */
+    .strip{padding:14px 18px;gap:12px 18px;font-size:9.5px;letter-spacing:.16em}
+    .strip span{gap:10px}
+
+    /* Featured */
+    .featured{padding:64px 18px}
+    .featured::after{width:280px;height:280px;right:-100px;top:-100px}
+    .featured .inner{grid-template-columns:1fr;gap:40px}
+    .featured h2{font-size:48px}
+    .featured .specs > div{padding:14px 0;font-size:12px}
+    .featured .specs b{font-size:16px}
+    .featured .price-row{margin:24px 0 18px;padding-top:18px;gap:12px}
+    .featured .price-row .num{font-size:38px}
+    .featured .price-row .aed{font-size:10px}
+    .featured .img-stack .seal{width:96px;height:96px;left:-12px;bottom:24px;font-size:8.5px}
+    .featured .img-stack .seal b{font-size:22px}
+    .featured .cta-row{flex-wrap:wrap;gap:10px}
+
+    /* Occasions */
+    .occasions{padding:64px 18px}
+    .occ-head h2{font-size:42px}
+    .occ-head .aside{font-size:14.5px}
+    .occ-rail{grid-template-columns:1fr 1fr;gap:12px}
+    .occ-card .label .name{font-size:20px}
+    .occ-card .label .sub{font-size:9px}
+    .occ-card .arrow{width:28px;height:28px;font-size:12px}
+
+    /* Bestsellers */
+    .best{padding:64px 18px}
+    .best-head{grid-template-columns:1fr;gap:18px;padding-bottom:18px;margin-bottom:32px}
+    .best-head h2{font-size:44px}
+    .best-head .filter{flex-wrap:wrap;gap:8px;font-size:10px}
+    .best-head .filter button{padding:6px 10px}
+    .best-grid{grid-template-columns:1fr;gap:36px}
+    .pcard .name{font-size:22px}
+    .pcard .price{font-size:20px}
+
+    /* Concierge */
+    .concierge{padding:64px 18px}
+    .concierge::before{width:320px;height:320px;left:-160px;top:-160px}
+    .concierge .grid{grid-template-columns:1fr;gap:36px}
+    .concierge h3{font-size:42px;margin-bottom:18px}
+    .concierge p{font-size:15.5px;margin-bottom:24px}
+    .concierge .wa{padding:14px 20px;font-size:10px;gap:10px;flex-wrap:wrap}
+    .concierge .wa b{font-size:17px}
+    .concierge .visual{aspect-ratio:4/5}
+    .concierge .chat{left:18px;right:18px;padding:14px 16px;font-size:13px}
+    .concierge .stamp{width:100px;height:100px;right:-10px;top:18px;font-size:8.5px}
+    .concierge .stamp b{font-size:22px}
+
+    /* Story */
+    .story{padding:64px 18px;grid-template-columns:1fr;gap:40px}
+    .story h2{font-size:38px}
+    .story p{font-size:15.5px}
+    .story .visual{aspect-ratio:auto;height:auto;display:grid;grid-template-columns:5fr 4fr;grid-template-rows:auto auto;gap:12px}
+    .story .visual .a,.story .visual .b{position:relative;width:100%;left:auto;right:auto;top:auto;bottom:auto}
+    .story .visual .a{grid-column:1 / 2;grid-row:1 / 3;aspect-ratio:4/5}
+    .story .visual .b{grid-column:2 / 3;grid-row:1 / 2;aspect-ratio:1/1}
+    .story .visual .quote{
+      position:relative;left:auto;bottom:auto;transform:none;
+      grid-column:2 / 3;grid-row:2 / 3;
+      max-width:none;font-size:16px;padding:14px 16px;align-self:start;
+    }
+
+    /* Press */
+    .press{padding:64px 18px}
+    .press h2{font-size:40px;margin-bottom:32px}
+    .press .logos{grid-template-columns:1fr 1fr}
+    .press .logos div{font-size:18px;padding:22px 10px;border-right:1px solid var(--rule)}
+    .press .logos div:nth-child(odd){border-right:1px solid var(--rule)}
+    .press .logos div:nth-child(even){border-right:0}
+    .press .logos div:nth-child(n+3){border-top:1px solid var(--rule)}
+    .press .logos div:last-child{display:none} /* 5 logos → show 4 in 2x2 */
+    .quotes{grid-template-columns:1fr;gap:18px;margin-top:36px}
+    .quotes .quote-card{padding:22px}
+    .quotes .quote-card:last-child{display:block} /* override the tablet rule above for mobile */
+    .quote-card p{font-size:17px}
+
+    /* Footer */
+    footer{padding:56px 18px 24px}
+    .foot-headline{font-size:64px;margin-bottom:32px;line-height:.94}
+    .foot-grid{grid-template-columns:1fr;gap:28px;padding-top:24px}
+    .foot-grid h4{margin-bottom:12px}
+    .foot-grid .news{max-width:none}
+    .foot-bottom{flex-direction:column;gap:8px;margin-top:32px}
+  }
+
+  /* tiny phones */
+  @media (max-width: 380px){
+    .hero-duo h1{font-size:46px}
+    .featured h2{font-size:40px}
+    .occ-head h2,.best-head h2{font-size:36px}
+    .concierge h3{font-size:36px}
+    .foot-headline{font-size:54px}
+    .occ-rail{grid-template-columns:1fr}
+  }
 </style>
 </head>
-<body data-palette="sand" data-type="presque" data-hero="duo">
+<body data-palette="oasis" data-type="presque" data-hero="duo">
 
 <div class="switcher">
   <div class="row">
-    <span>21Bloom · Homepage explorations · May 2026</span>
+    <span>No.21 Blooms · Homepage explorations · May 2026</span>
     <nav class="tabs">
       <a href="01-editorial.html"><span class="dot"></span>01 — Editorial</a>
       <a href="02-noir.html"><span class="dot"></span>02 — Noir</a>
@@ -433,8 +728,7 @@
 
 <header class="nav">
   <a class="brand" href="#">
-    <span class="glyph">21</span>
-    Bloom <small>· Dubai</small>
+    <img src="images/logo.png" alt="No.21 Blooms · Dubai" />
   </a>
   <nav class="links">
     <a href="#">Bouquets</a>
@@ -447,6 +741,9 @@
     <span class="pill">Open · Same-day until 18:00</span>
     <a href="#">Sign in</a>
     <a class="bag" href="#">Bag <span class="count">2</span></a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.body.dataset.menu = document.body.dataset.menu === 'open' ? 'closed' : 'open';">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -470,8 +767,8 @@
       </div>
     </div>
     <div class="imgs">
-      <div class="a ph rose"><span class="ph-tag">hero · primary bouquet</span></div>
-      <div class="b ph warm"><span class="ph-tag">hero · detail</span></div>
+      <div class="a"><img src="images/hero-bouquet.jpg" alt="Tahani — bouquet of the week" /></div>
+      <div class="b"><img src="images/hero-bouquet-detail.jpg" alt="Tahani — detail" /></div>
       <div class="stamp">Bouquet<br>of the week<br><b>Tahani</b></div>
     </div>
   </div>
@@ -479,7 +776,7 @@
   <!-- B · Circle -->
   <div class="hero-circle">
     <div class="frame">
-      <div class="ph rose"><span class="ph-tag">hero · circular composition</span></div>
+      <img src="images/hero-bouquet.jpg" alt="Tahani — bouquet of the week" />
     </div>
     <div class="corner-l">Bouquet of the week<b>Tahani</b>21 stems · hand-tied · linen</div>
     <div class="corner-r">Same-day, all of Dubai<b>18:00 GST</b>Order by · free delivery</div>
@@ -495,7 +792,7 @@
   <div class="hero-postcard">
     <div class="card">
       <div class="top">
-        <div>21Bloom · Atelier<br>Al Quoz 1, Dubai<br>11.05.26</div>
+        <div>No.21 Blooms · Atelier<br>Al Quoz 1, Dubai<br>11.05.26</div>
         <div class="stamp">Same-day<br>before<br>18:00</div>
       </div>
       <div>
@@ -511,7 +808,7 @@
     </div>
     <div class="image">
       <span class="tag">Bouquet of the week</span>
-      <div class="ph rose"><span class="ph-tag">hero · featured</span></div>
+      <img src="images/hero-bouquet.jpg" alt="Tahani — bouquet of the week" />
     </div>
   </div>
 </section>
@@ -547,77 +844,13 @@
       </div>
     </div>
     <div class="img-stack">
-      <div class="a"><div class="ph rose"><span class="ph-tag">tahani · close-up</span></div></div>
+      <div class="a"><img src="images/tahani-product.jpg" alt="Tahani — a quiet celebration" /></div>
       <div class="seal">Edition<br>of <b>60</b><br>this week</div>
     </div>
   </div>
 </section>
 
-<!-- ============ OCCASIONS ============ -->
-<section class="occasions">
-  <div class="occ-head">
-    <div>
-      <div class="eyebrow"><span class="line"></span>Section II · Occasions</div>
-      <h2>For the moments<br>that <em>deserve</em><br>flowers.</h2>
-    </div>
-    <div class="aside">
-      Eight quietly considered edits for the calendar's tender corners. Each ships with a hand-written note from our atelier — never a printed card.
-      <br><a href="#">All occasions →</a>
-    </div>
-  </div>
-  <div class="occ-rail">
-    <a class="occ-card" href="#">
-      <div class="ph rose"><span class="ph-tag">romance</span></div>
-      <span class="num">01 / 08</span>
-      <div class="label"><span class="name">Romance</span><span class="sub">For her · For him</span></div>
-      <span class="arrow">→</span>
-    </a>
-    <a class="occ-card" href="#">
-      <div class="ph cream"><span class="ph-tag">anniversary</span></div>
-      <span class="num">02 / 08</span>
-      <div class="label"><span class="name">Anniversary</span><span class="sub">One year & beyond</span></div>
-      <span class="arrow">→</span>
-    </a>
-    <a class="occ-card" href="#">
-      <div class="ph olive"><span class="ph-tag">condolence</span></div>
-      <span class="num">03 / 08</span>
-      <div class="label"><span class="name">Condolence</span><span class="sub">With sympathy</span></div>
-      <span class="arrow">→</span>
-    </a>
-    <a class="occ-card" href="#">
-      <div class="ph warm"><span class="ph-tag">eid · ramadan</span></div>
-      <span class="num">04 / 08</span>
-      <div class="label"><span class="name">Eid · Ramadan</span><span class="sub">Limited edition</span></div>
-      <span class="arrow">→</span>
-    </a>
-    <a class="occ-card" href="#">
-      <div class="ph dune"><span class="ph-tag">new baby</span></div>
-      <span class="num">05 / 08</span>
-      <div class="label"><span class="name">New baby</span><span class="sub">Welcome</span></div>
-      <span class="arrow">→</span>
-    </a>
-    <a class="occ-card" href="#">
-      <div class="ph umber"><span class="ph-tag">birthday</span></div>
-      <span class="num">06 / 08</span>
-      <div class="label"><span class="name">Birthday</span><span class="sub">Many happy</span></div>
-      <span class="arrow">→</span>
-    </a>
-    <a class="occ-card" href="#">
-      <div class="ph olive"><span class="ph-tag">get well</span></div>
-      <span class="num">07 / 08</span>
-      <div class="label"><span class="name">Get well</span><span class="sub">Soon</span></div>
-      <span class="arrow">→</span>
-    </a>
-    <a class="occ-card" href="#">
-      <div class="ph rose"><span class="ph-tag">just because</span></div>
-      <span class="num">08 / 08</span>
-      <div class="label"><span class="name">Just because</span><span class="sub">A small surprise</span></div>
-      <span class="arrow">→</span>
-    </a>
-  </div>
-</section>
-
-<!-- ============ BESTSELLERS ============ -->
+<!-- ============ BESTSELLERS / SIGNATURES ============ -->
 <section class="best">
   <div class="best-head">
     <h2>The <em>signatures.</em></h2>
@@ -712,6 +945,94 @@
   </div>
 </section>
 
+<!-- ============ OCCASIONS ============ -->
+<section class="occasions">
+  <div class="occ-head">
+    <div>
+      <div class="eyebrow"><span class="line"></span>Section II · Occasions</div>
+      <h2>For the moments<br>that <em>deserve</em><br>flowers.</h2>
+    </div>
+    <div class="aside">
+      Eight quietly considered edits for the calendar's tender corners. Each ships with a hand-written note from our atelier — never a printed card.
+      <br><a href="#">All occasions →</a>
+    </div>
+  </div>
+  <div class="occ-rail">
+    <a class="occ-card" href="#">
+      <div class="ph rose"><span class="ph-tag">romance</span></div>
+      <span class="num">01 / 08</span>
+      <div class="label"><span class="name">Romance</span><span class="sub">For her · For him</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph cream"><span class="ph-tag">anniversary</span></div>
+      <span class="num">02 / 08</span>
+      <div class="label"><span class="name">Anniversary</span><span class="sub">One year & beyond</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph olive"><span class="ph-tag">condolence</span></div>
+      <span class="num">03 / 08</span>
+      <div class="label"><span class="name">Condolence</span><span class="sub">With sympathy</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph warm"><span class="ph-tag">eid · ramadan</span></div>
+      <span class="num">04 / 08</span>
+      <div class="label"><span class="name">Eid · Ramadan</span><span class="sub">Limited edition</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph dune"><span class="ph-tag">new baby</span></div>
+      <span class="num">05 / 08</span>
+      <div class="label"><span class="name">New baby</span><span class="sub">Welcome</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph umber"><span class="ph-tag">birthday</span></div>
+      <span class="num">06 / 08</span>
+      <div class="label"><span class="name">Birthday</span><span class="sub">Many happy</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph olive"><span class="ph-tag">get well</span></div>
+      <span class="num">07 / 08</span>
+      <div class="label"><span class="name">Get well</span><span class="sub">Soon</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph rose"><span class="ph-tag">just because</span></div>
+      <span class="num">08 / 08</span>
+      <div class="label"><span class="name">Just because</span><span class="sub">A small surprise</span></div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ CONCIERGE ============ -->
+<section class="concierge">
+  <div class="grid">
+    <div>
+      <div class="lbl"><span class="line"></span>By concierge</div>
+      <h3>Need it to feel<br><em>perfect</em>? Write to us.</h3>
+      <p>Tell us the occasion, the recipient and a budget. We'll send three composition options within nine minutes and deliver tonight — across Dubai, or to your hotel suite.</p>
+      <a class="wa" href="#">
+        <span class="dot"></span>
+        WhatsApp the atelier
+        <b>+971&nbsp;4&nbsp;000&nbsp;0021</b>
+      </a>
+    </div>
+    <div class="visual">
+      <div class="ph warm"><span class="ph-tag">concierge · photograph</span></div>
+      <div class="stamp">Reply<br>within<br><b>9 min</b></div>
+      <div class="chat">
+        <small>— Maya · 18:42 —</small>
+        Thank you so much — they arrived just as he sat down. He doesn't know what hit him.
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ STORY ============ -->
 <section class="story">
   <div class="visual">
@@ -719,13 +1040,13 @@
     <div class="b"><div class="ph olive"><span class="ph-tag">hands at work</span></div></div>
     <div class="quote">
       "We arrange the way Dubai itself does — quietly, generously, all year."
-      <small>— Noor, founder · 21Bloom</small>
+      <small>— Noor, founder · No.21 Blooms</small>
     </div>
   </div>
   <div>
     <div class="eyebrow">— From the atelier —</div>
     <h2>A small studio<br>in <em>Al Quoz</em>.</h2>
-    <p>21Bloom is six pairs of hands, a cool room, and a long table. We compose to order, twice daily — Sat through Thu — and we never use a foam base or a plastic sleeve.</p>
+    <p>No.21 Blooms is six pairs of hands, a cool room, and a long table. We compose to order, twice daily — Sat through Thu — and we never use a foam base or a plastic sleeve.</p>
     <p>Stems are flown in overnight from fourteen growers — Holland, Kenya, Italy, and a small farm just outside Sharjah. What doesn't sell that day is given to the school next door.</p>
     <div class="sign">— Noor, founder.</div>
   </div>
@@ -750,7 +1071,7 @@
     </div>
     <div class="quote-card">
       <span class="mark">"</span>
-      <p>21Bloom has done for flowers in Dubai what Aesop did for soap: stripped away the noise and made you notice the object.</p>
+      <p>No.21 Blooms has done for flowers in Dubai what Aesop did for soap: stripped away the noise and made you notice the object.</p>
       <span class="src">— Condé Nast Traveller</span>
     </div>
     <div class="quote-card">
@@ -805,7 +1126,7 @@
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 21Bloom Atelier · Dubai</span>
+    <span>© 2026 No.21 Blooms Atelier · Dubai</span>
     <span>Concept 03 · Desert</span>
   </div>
 </footer>
@@ -818,7 +1139,7 @@
 <script type="text/babel" src="tweaks-panel.jsx"></script>
 <script type="text/babel">
   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-    "palette": "rose",
+    "palette": "oasis",
     "typePair": "presque",
     "hero": "duo"
   }/*EDITMODE-END*/;
@@ -837,7 +1158,7 @@
           onChange={(v)=>setTweak('palette', v)} />
         <TweakSection label="Typography" />
         <TweakRadio label="Pairing" value={t.typePair}
-          options={[{value:"presque",label:"Presque + Inter Tight"},{value:"marcellus",label:"Marcellus + Inter Tight"},{value:"fraunces",label:"Fraunces + Jost"},{value:"tenor",label:"Tenor Sans + Inter Tight"}]}
+          options={[{value:"presque",label:"Presque Elegante + DM Sans"},{value:"marcellus",label:"Marcellus + Inter Tight"},{value:"fraunces",label:"Fraunces + Jost"},{value:"tenor",label:"Tenor Sans + Inter Tight"}]}
           onChange={(v)=>setTweak('typePair', v)} />
         <TweakSection label="Hero" />
         <TweakRadio label="Composition" value={t.hero}
