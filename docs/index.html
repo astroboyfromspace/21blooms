@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>21Bloom — Homepage explorations</title>
-<meta name="viewport" content="width=1440" />
+<title>No.21 Blooms — Dubai</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Tenor+Sans&family=Inter+Tight:wght@300;400;500;600&family=Jost:wght@300;400;500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
 <style>
   /* Custom display face — Presque Elegante (Typebae). */
   @font-face{
@@ -17,267 +17,1408 @@
     font-display:swap;
   }
   :root{
-    --bg:#EDE7D8;
-    --bg-2:#E2DAC7;
-    --ink:#1A1815;
-    --ink-2:#5B564C;
-    --ink-3:#8A8579;
-    --rule:rgba(26,24,21,.16);
-    --accent:#C25E4F;
-    --display:"Presque Elegante","Cormorant", serif;
-    --sans:"DM Sans", system-ui, sans-serif;
+    --sand-0:#F6EFE0;
+    --sand-1:#EDE1CB;
+    --sand-2:#E2D2B4;
+    --cream:#FBF5E9;
+    --umber:#3A2A1F;
+    --umber-2:#5C4634;
+    --umber-3:#8B7459;
+    --terra:#C2693F;
+    --terra-2:#9F4A28;
+    --olive:#7B7A3E;
+    --rule:rgba(58,42,31,.16);
+    --rule-soft:rgba(58,42,31,.08);
+    --display:"Marcellus","Times New Roman",serif;
+    --sans:"Inter Tight", system-ui, sans-serif;
     --mono:"JetBrains Mono", ui-monospace, monospace;
   }
+  body[data-palette="sand"]   { --sand-0:#F6EFE0; --sand-1:#EDE1CB; --sand-2:#E2D2B4; --umber:#3A2A1F; --terra:#C2693F; --olive:#7B7A3E; }
+  body[data-palette="dune"]   { --sand-0:#F1E7D2; --sand-1:#E4D3B0; --sand-2:#D2BA8A; --umber:#3D2C19; --terra:#B8633C; --olive:#83793B; }
+  body[data-palette="oasis"]  { --sand-0:#EFEEDF; --sand-1:#DDDDBE; --sand-2:#C9C99B; --umber:#1F2A1F; --terra:#3D6F4A; --olive:#5C7034; }
+  body[data-palette="rose"]   { --sand-0:#F7E9E2; --sand-1:#ECD5C9; --sand-2:#DDB9A6; --umber:#3B201B; --terra:#A85040; --olive:#7B5A3C; }
+
+  body[data-type="marcellus"] { --display:"Marcellus", serif; --sans:"Inter Tight", sans-serif; }
+  body[data-type="fraunces"]  { --display:"Fraunces", serif; --sans:"Jost", sans-serif; }
+  body[data-type="tenor"]     { --display:"Tenor Sans", serif; --sans:"Inter Tight", sans-serif; }
+  body[data-type="presque"]   { --display:"Presque Elegante","Marcellus", serif; --sans:"DM Sans", system-ui, sans-serif; }
+
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
-  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  body{
+    background:var(--sand-0);color:var(--umber);
+    font-family:var(--sans);font-weight:400;
+    -webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55;
+    overflow-x:hidden;
+  }
   a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:default;padding:0}
 
-  .head{
-    padding:40px 48px 28px;border-bottom:1px solid var(--rule);
-    display:flex;justify-content:space-between;align-items:flex-end;gap:48px;
-  }
-  .head .brand{font-family:var(--display);font-size:44px;letter-spacing:.01em;font-weight:400;line-height:1}
-  .head .brand small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
-  .head .meta{
-    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);text-align:right;line-height:1.8;
-  }
-  .head .meta b{color:var(--ink);font-family:var(--display);font-size:20px;letter-spacing:0;font-weight:400;text-transform:none;display:block;margin-bottom:4px}
-
-  .intro{padding:64px 48px 24px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
-  .intro .lead{font-family:var(--display);font-size:64px;line-height:1;font-weight:300;letter-spacing:-.012em;margin:0;max-width:18ch}
-  .intro .lead em{font-style:italic;color:var(--accent)}
-  .intro .body p{margin:0 0 14px;color:var(--ink-2);font-size:16px;line-height:1.6;max-width:50ch}
-  .intro .body .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
-
-  .grid{padding:48px 48px 64px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .card{
-    background:#FBF8F1;border:1px solid var(--rule);
-    display:flex;flex-direction:column;
-    overflow:hidden;border-radius:2px;
-    transition:transform .35s ease, box-shadow .35s ease;
-  }
-  .card:hover{transform:translateY(-4px);box-shadow:0 30px 80px -40px rgba(26,24,21,.4)}
-
-  .card .top{
-    padding:18px 22px;display:flex;justify-content:space-between;align-items:center;
-    font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
+  /* Nav */
+  .nav{
+    display:grid;grid-template-columns:auto 1fr auto;
+    align-items:center;gap:48px;
+    padding:24px 40px 22px;
     border-bottom:1px solid var(--rule);
   }
-  .card .top b{color:var(--ink)}
-  .card .frame{position:relative;aspect-ratio:5/4;overflow:hidden;border-bottom:1px solid var(--rule)}
-  .card .frame iframe{
-    position:absolute;left:0;top:0;
-    width:1440px;height:1152px;
-    transform:scale(.43);transform-origin:top left;
-    border:0;pointer-events:none;
+  .brand{display:inline-flex;align-items:center;color:var(--umber)}
+  .brand img{height:56px;width:auto;display:block}
+  body[data-palette="oasis"] .brand img,
+  body[data-palette="dune"]  .brand img,
+  body[data-palette="rose"]  .brand img,
+  body[data-palette="sand"]  .brand img{filter:none}
+  .nav .links{display:flex;gap:32px;font-size:14px;justify-self:center;color:var(--umber-2)}
+  .nav .links a:hover{color:var(--terra)}
+  .nav .right{display:flex;gap:24px;align-items:center;font-size:13.5px;color:var(--umber-2)}
+  .nav .right .pill{
+    display:inline-flex;align-items:center;gap:10px;padding:8px 14px;
+    border-radius:999px;background:var(--sand-1);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--umber);
   }
-  .card .frame .scrim{
-    position:absolute;inset:0;background:transparent;
+  .nav .right .pill::before{content:"";width:6px;height:6px;border-radius:50%;background:#5A8C5A;box-shadow:0 0 0 4px rgba(90,140,90,.18)}
+  .nav .right .bag{display:inline-flex;align-items:center;gap:8px}
+  .nav .right .bag .count{width:18px;height:18px;border:1px solid var(--umber);border-radius:50%;display:inline-grid;place-items:center;font-size:10px;font-family:var(--mono)}
+
+  /* Placeholder system */
+  .ph{
+    background:
+      radial-gradient(120% 80% at 25% 25%, color-mix(in oklab, var(--terra) 26%, transparent), transparent 60%),
+      repeating-linear-gradient(135deg, rgba(58,42,31,.07) 0 1px, transparent 1px 14px),
+      linear-gradient(180deg, var(--sand-2), var(--sand-1));
+    border:1px solid var(--rule);overflow:hidden;position:relative;
+  }
+  .ph .ph-tag{
+    position:absolute;left:14px;bottom:12px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--umber);
+    background:color-mix(in oklab, var(--cream) 84%, transparent);padding:5px 9px;border-radius:3px;
+  }
+  .ph.rose   { background: radial-gradient(120% 80% at 25% 25%, rgba(190,110,100,.32), transparent 60%), repeating-linear-gradient(135deg, rgba(58,42,31,.07) 0 1px, transparent 1px 14px), linear-gradient(180deg,#E6CBC0, #EDD7C9);}
+  .ph.warm   { background: radial-gradient(120% 80% at 25% 25%, rgba(194,105,63,.34), transparent 60%), repeating-linear-gradient(135deg, rgba(58,42,31,.07) 0 1px, transparent 1px 14px), linear-gradient(180deg,#E8C6A1, #EFD9B6);}
+  .ph.olive  { background: radial-gradient(120% 80% at 25% 25%, rgba(123,122,62,.32), transparent 60%), repeating-linear-gradient(135deg, rgba(58,42,31,.07) 0 1px, transparent 1px 14px), linear-gradient(180deg,#CFCB94, #DCD8A6);}
+  .ph.dune   { background: radial-gradient(120% 80% at 25% 25%, rgba(180,140,90,.34), transparent 60%), repeating-linear-gradient(135deg, rgba(58,42,31,.07) 0 1px, transparent 1px 14px), linear-gradient(180deg,#E8D4A8, #EDDDB7);}
+  .ph.umber  { background: radial-gradient(120% 80% at 25% 25%, rgba(80,60,40,.40), transparent 60%), repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 14px), linear-gradient(180deg,#6B5036, #4C3924);}
+  .ph.cream  { background: radial-gradient(120% 80% at 25% 25%, rgba(220,200,160,.30), transparent 60%), repeating-linear-gradient(135deg, rgba(58,42,31,.07) 0 1px, transparent 1px 14px), linear-gradient(180deg,#F0E2C2, #F6EFD8);}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-size:13px;letter-spacing:.04em;
+    border:1px solid var(--umber);
+  }
+  .btn.primary{background:var(--umber);color:var(--cream);border-color:var(--umber)}
+  .btn.terra{background:var(--terra);color:var(--cream);border-color:var(--terra)}
+  .btn.ghost{color:var(--umber)}
+
+  /* ============ HERO ============ */
+  .hero{padding:0 40px;position:relative}
+
+  body[data-hero="duo"] .hero-duo{display:grid}
+  body[data-hero="circle"] .hero-circle{display:block}
+  body[data-hero="postcard"] .hero-postcard{display:grid}
+  .hero-duo,.hero-circle,.hero-postcard{display:none}
+
+  /* A · Duo — type left, layered images right with offset */
+  .hero-duo{
+    grid-template-columns:1.05fr 1fr;gap:64px;
+    padding:80px 0 100px;align-items:center;position:relative;
+  }
+  .hero-duo .eyebrow{
+    display:inline-flex;align-items:center;gap:14px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--umber-3);
+    margin-bottom:34px;
+  }
+  .hero-duo .eyebrow .glyph{
+    width:38px;height:38px;border-radius:50%;background:var(--terra);
+    color:var(--cream);display:grid;place-items:center;font-family:var(--display);font-size:18px;
+  }
+  .hero-duo h1{
+    font-family:var(--display);
+    font-size:124px;line-height:.94;letter-spacing:-.012em;margin:0 0 28px;font-weight:400;
+  }
+  .hero-duo h1 em{font-style:italic;color:var(--terra)}
+  .hero-duo h1 .ul{
+    display:inline-block;border-bottom:3px solid var(--terra);padding-bottom:6px;line-height:.85;
+  }
+  .hero-duo p.lede{font-size:18px;line-height:1.55;color:var(--umber-2);max-width:48ch;margin:0 0 36px}
+  .hero-duo .cta-row{display:flex;gap:14px;align-items:center;margin-bottom:48px}
+  .hero-duo .meta-row{
+    display:grid;grid-template-columns:repeat(3,auto);gap:40px;
+    border-top:1px solid var(--rule);padding-top:24px;max-width:560px;
+  }
+  .hero-duo .meta-row > div{display:flex;flex-direction:column;gap:4px}
+  .hero-duo .meta-row .l{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber-3)}
+  .hero-duo .meta-row .v{font-family:var(--display);font-size:24px;color:var(--umber);line-height:1}
+
+  .hero-duo .imgs{position:relative;height:620px}
+  .hero-duo .imgs .a{
+    position:absolute;left:0;top:0;width:78%;aspect-ratio:4/5;
+    box-shadow:0 30px 80px -30px rgba(58,42,31,.4);overflow:hidden;
+  }
+  .hero-duo .imgs .b{
+    position:absolute;right:0;bottom:0;width:54%;aspect-ratio:1/1.05;
+    box-shadow:0 30px 80px -30px rgba(58,42,31,.4);overflow:hidden;
+    border:6px solid var(--cream);
+  }
+  .hero-duo .imgs .a img,
+  .hero-duo .imgs .b img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-duo .imgs .stamp{
+    position:absolute;right:6%;top:8%;
+    width:140px;height:140px;border-radius:50%;
+    background:var(--cream);border:1px solid var(--umber);
+    display:grid;place-items:center;text-align:center;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber);
+    transform:rotate(8deg);line-height:1.5;z-index:2;
+  }
+  .hero-duo .imgs .stamp b{display:block;font-family:var(--display);font-size:32px;color:var(--terra);text-transform:none;font-weight:400;letter-spacing:0;margin-bottom:2px}
+
+  /* B · Circle — central circle hero */
+  .hero-circle{position:relative;padding:60px 0 80px;text-align:center}
+  .hero-circle .frame{
+    position:relative;width:680px;height:680px;margin:0 auto;
+    border-radius:50%;overflow:hidden;border:1px solid var(--rule);
+  }
+  .hero-circle .frame .ph{position:absolute;inset:0}
+  .hero-circle .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-circle .corner-l, .hero-circle .corner-r{
+    position:absolute;top:42%;width:280px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--umber-3);line-height:1.6;
+  }
+  .hero-circle .corner-l{left:40px;text-align:right}
+  .hero-circle .corner-r{right:40px;text-align:left}
+  .hero-circle .corner-l b, .hero-circle .corner-r b{display:block;font-family:var(--display);font-size:32px;color:var(--terra);text-transform:none;letter-spacing:0;margin-bottom:6px}
+  .hero-circle h1{
+    font-family:var(--display);font-weight:400;
+    font-size:108px;line-height:.94;letter-spacing:-.012em;margin:36px 0 18px;
+  }
+  .hero-circle h1 em{font-style:italic;color:var(--terra)}
+  .hero-circle p{max-width:48ch;margin:0 auto 28px;color:var(--umber-2);font-size:17px}
+  .hero-circle .cta-row{display:inline-flex;gap:14px}
+
+  /* C · Postcard — two columns with letter card */
+  .hero-postcard{
+    grid-template-columns:1fr 1fr;gap:32px;padding:48px 0 80px;align-items:stretch;
+  }
+  .hero-postcard .card{
+    background:var(--cream);border:1px solid var(--umber);padding:48px;
+    display:flex;flex-direction:column;justify-content:space-between;position:relative;
+  }
+  .hero-postcard .card::before{
+    content:"";position:absolute;left:24px;right:24px;top:24px;bottom:24px;border:1px dashed var(--umber-3);pointer-events:none;
+  }
+  .hero-postcard .card .top{display:flex;justify-content:space-between;align-items:flex-start;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber-3)}
+  .hero-postcard .card .top .stamp{
+    width:64px;height:80px;border:1px dashed var(--terra);display:grid;place-items:center;color:var(--terra);
+    text-align:center;font-size:9px;line-height:1.3;letter-spacing:.16em;
+  }
+  .hero-postcard h1{
+    font-family:var(--display);font-size:88px;line-height:.96;letter-spacing:-.012em;margin:24px 0 16px;font-weight:400;
+  }
+  .hero-postcard h1 em{font-style:italic;color:var(--terra)}
+  .hero-postcard .card p{margin:0 0 14px;font-size:16px;color:var(--umber-2);max-width:38ch}
+  .hero-postcard .card .sign{
+    font-family:var(--display);font-style:italic;font-size:32px;color:var(--terra);margin-top:14px;
+  }
+  .hero-postcard .card .cta-row{display:flex;gap:14px;margin-top:28px}
+  .hero-postcard .image{position:relative;aspect-ratio:4/5;overflow:hidden}
+  .hero-postcard .image .ph{position:absolute;inset:0}
+  .hero-postcard .image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-postcard .image .tag{
+    position:absolute;left:-12px;top:30px;background:var(--terra);color:var(--cream);
+    padding:8px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
   }
 
-  .card .body{padding:24px 22px 28px;flex:1;display:flex;flex-direction:column;gap:14px}
-  .card h2{font-family:var(--display);font-size:38px;line-height:1;letter-spacing:-.005em;margin:0;font-weight:400}
-  .card h2 em{font-style:italic;color:var(--accent)}
-  .card .sub{color:var(--ink-2);font-size:14.5px;line-height:1.55;margin:0;max-width:38ch}
+  /* ============ STRIP ============ */
+  .strip{
+    background:var(--umber);color:var(--cream);
+    display:flex;align-items:center;justify-content:space-between;gap:48px;
+    padding:18px 40px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  }
+  .strip span{display:inline-flex;align-items:center;gap:14px}
+  .strip span::before{content:"❋";color:var(--terra)}
 
-  .card .specs{
+  /* ============ FEATURED ============ */
+  .featured{padding:120px 40px;background:var(--sand-1);position:relative;overflow:hidden}
+  .featured::after{
+    content:"";position:absolute;right:-160px;top:-160px;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(closest-side, color-mix(in oklab, var(--terra) 12%, transparent), transparent);
+    pointer-events:none;
+  }
+  .featured .inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative}
+  .featured .label{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--umber-3);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+  .featured .label .num{font-family:var(--display);font-size:30px;color:var(--terra);letter-spacing:0;text-transform:none}
+  .featured h2{
+    font-family:var(--display);font-size:84px;line-height:.96;letter-spacing:-.012em;margin:0 0 24px;font-weight:400;
+  }
+  .featured h2 em{font-style:italic;color:var(--terra)}
+  .featured p{color:var(--umber-2);max-width:46ch;margin:0 0 28px;font-size:16.5px;line-height:1.65}
+  .featured .specs{
     display:grid;grid-template-columns:1fr 1fr;gap:0;
     border-top:1px solid var(--rule);
-    margin-top:6px;
   }
-  .card .specs > div{
-    padding:12px 0;display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-2);
+  .featured .specs > div{
+    padding:18px 0;display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);font-size:13px;
+  }
+  .featured .specs > div:nth-child(odd){padding-right:24px;border-right:1px solid var(--rule)}
+  .featured .specs > div:nth-child(even){padding-left:24px}
+  .featured .specs span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--umber-3)}
+  .featured .specs b{color:var(--umber);font-weight:400;font-family:var(--display);font-size:18px}
+  .featured .price-row{display:flex;align-items:baseline;gap:18px;margin:32px 0 24px;border-top:1px solid var(--rule);padding-top:24px}
+  .featured .price-row .aed{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber-3)}
+  .featured .price-row .num{font-family:var(--display);font-size:54px;line-height:1;color:var(--terra)}
+
+  .featured .img-stack{position:relative;aspect-ratio:4/5}
+  .featured .img-stack .a{position:absolute;inset:0;border:1px solid var(--rule);box-shadow:0 30px 80px -30px rgba(58,42,31,.45);overflow:hidden}
+  .featured .img-stack .a .ph{position:absolute;inset:0}
+  .featured .img-stack .a img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .featured .img-stack .seal{
+    position:absolute;left:-32px;bottom:48px;width:130px;height:130px;border-radius:50%;
+    background:var(--cream);border:1px solid var(--umber);display:grid;place-items:center;text-align:center;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber);line-height:1.5;
+    transform:rotate(-12deg);
+  }
+  .featured .img-stack .seal b{display:block;font-family:var(--display);font-size:28px;color:var(--terra);font-weight:400;text-transform:none;letter-spacing:0;margin-bottom:2px}
+
+  /* ============ OCCASIONS ============ */
+  .occasions{padding:120px 40px}
+  .occ-head{
+    display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;
+    margin-bottom:56px;
+  }
+  .occ-head .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+  .occ-head .eyebrow .line{flex:0 0 60px;height:1px;background:var(--terra)}
+  .occ-head h2{font-family:var(--display);font-size:80px;line-height:.96;letter-spacing:-.012em;margin:0;font-weight:400}
+  .occ-head h2 em{font-style:italic;color:var(--terra)}
+  .occ-head .aside{color:var(--umber-2);max-width:42ch;font-size:15.5px}
+  .occ-head .aside a{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--umber);padding-bottom:2px}
+
+  .occ-rail{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  }
+  .occ-card{
+    position:relative;aspect-ratio:3/4;border-radius:8px;overflow:hidden;border:1px solid var(--rule);
+    transition:transform .4s ease;
+  }
+  .occ-card:hover{transform:translateY(-4px)}
+  .occ-card .ph{position:absolute;inset:0;border:0}
+  .occ-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%, rgba(58,42,31,.65))}
+  .occ-card .num{position:absolute;left:14px;top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--cream);z-index:1}
+  .occ-card .label{position:absolute;left:18px;right:18px;bottom:16px;z-index:1;color:var(--cream)}
+  .occ-card .label .name{font-family:var(--display);font-size:28px;line-height:1.05;display:block}
+  .occ-card .label .sub{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,250,240,.85);display:block;margin-top:4px}
+  .occ-card .arrow{position:absolute;right:14px;bottom:14px;width:34px;height:34px;border-radius:50%;background:var(--cream);color:var(--umber);display:grid;place-items:center;font-size:14px;z-index:1}
+
+  /* ============ BESTSELLERS ============ */
+  .best{padding:120px 40px;background:var(--cream);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .best-head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:48px;border-bottom:1px solid var(--rule);padding-bottom:24px}
+  .best-head h2{font-family:var(--display);font-size:80px;line-height:.96;letter-spacing:-.012em;margin:0;font-weight:400}
+  .best-head h2 em{font-style:italic;color:var(--terra)}
+  .best-head .filter{display:flex;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--umber-3)}
+  .best-head .filter button{padding:8px 14px;border:1px solid var(--rule);border-radius:999px}
+  .best-head .filter button.on{background:var(--umber);color:var(--cream);border-color:var(--umber)}
+
+  .best-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .pcard{display:flex;flex-direction:column;gap:14px}
+  .pcard .image{position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden;border:1px solid var(--rule)}
+  .pcard .image .ph{position:absolute;inset:0;border:0}
+  .pcard .image .badge{
+    position:absolute;left:14px;top:14px;
+    background:var(--cream);color:var(--umber);
+    font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    padding:6px 10px;border-radius:999px;
+  }
+  .pcard .image .add{
+    position:absolute;right:14px;bottom:14px;width:44px;height:44px;border-radius:50%;
+    background:var(--terra);color:var(--cream);display:grid;place-items:center;font-size:20px;
+  }
+  .pcard .row{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  .pcard .name{font-family:var(--display);font-size:28px;line-height:1.1;letter-spacing:-.005em}
+  .pcard .name small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--umber-3);text-transform:uppercase;margin-top:4px}
+  .pcard .price{font-family:var(--display);font-size:24px;color:var(--terra);text-align:right;white-space:nowrap;line-height:1}
+  .pcard .price small{display:block;font-family:var(--mono);font-size:10px;color:var(--umber-3);letter-spacing:.16em;margin-top:4px}
+  .pcard .desc{font-size:13.5px;color:var(--umber-2);line-height:1.5;max-width:38ch}
+
+  /* ============ CONCIERGE BAND ============ */
+  .concierge{
+    padding:120px 40px;background:var(--sand-1);
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    position:relative;overflow:hidden;
+  }
+  .concierge::before{
+    content:"";position:absolute;left:-180px;top:-180px;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(closest-side, color-mix(in oklab, var(--terra) 14%, transparent), transparent);
+    pointer-events:none;
+  }
+  .concierge .grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative}
+  .concierge .lbl{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);
+    margin-bottom:16px;display:flex;align-items:center;gap:12px;
+  }
+  .concierge .lbl .line{flex:0 0 60px;height:1px;background:var(--terra)}
+  .concierge h3{
+    font-family:var(--display);font-weight:400;font-size:80px;line-height:.96;letter-spacing:-.012em;
+    margin:0 0 22px;color:var(--umber);
+  }
+  .concierge h3 em{font-style:italic;color:var(--terra)}
+  .concierge p{color:var(--umber-2);max-width:46ch;font-size:16.5px;line-height:1.65;margin:0 0 32px}
+  .concierge .wa{
+    display:inline-flex;align-items:center;gap:14px;
+    border:1px solid var(--umber);padding:18px 26px;border-radius:999px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber);
+    background:var(--cream);
+  }
+  .concierge .wa .dot{
+    width:8px;height:8px;border-radius:50%;background:#5A8C5A;
+    box-shadow:0 0 0 4px rgba(90,140,90,.18);
+  }
+  .concierge .wa b{
+    font-family:var(--display);font-size:20px;font-style:italic;letter-spacing:0;
+    color:var(--terra);font-weight:400;text-transform:none;
+  }
+  .concierge .visual{position:relative;aspect-ratio:5/4;border:1px solid var(--rule);box-shadow:0 30px 80px -30px rgba(58,42,31,.4)}
+  .concierge .visual > .ph{position:absolute;inset:0;border:0}
+  .concierge .chat{
+    position:absolute;right:18px;bottom:18px;left:28%;
+    background:var(--cream);border:1px solid var(--umber);padding:18px 22px;
+    font-size:14px;color:var(--umber);line-height:1.55;
+  }
+  .concierge .chat small{
+    display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--umber-3);margin-bottom:8px;
+  }
+  .concierge .stamp{
+    position:absolute;right:-18px;top:32px;width:130px;height:130px;border-radius:50%;
+    background:var(--cream);border:1px solid var(--umber);display:grid;place-items:center;text-align:center;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber);line-height:1.5;
+    transform:rotate(8deg);z-index:2;
+  }
+  .concierge .stamp b{
+    display:block;font-family:var(--display);font-size:26px;color:var(--terra);
+    font-weight:400;text-transform:none;letter-spacing:0;margin-bottom:2px;
+  }
+
+  /* ============ TWO-UP STORY ============ */
+  .story{
+    padding:120px 40px;
+    display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+    background:linear-gradient(180deg, var(--sand-0), var(--sand-1));
     border-bottom:1px solid var(--rule);
   }
-  .card .specs > div:nth-child(odd){padding-right:14px;border-right:1px solid var(--rule)}
-  .card .specs > div:nth-child(even){padding-left:14px}
-  .card .specs span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase}
-  .card .specs b{color:var(--ink);font-weight:500;font-family:var(--sans)}
-
-  .card .swatches{display:flex;gap:6px;margin-top:4px}
-  .card .swatches span{width:22px;height:22px;border-radius:50%;border:1px solid var(--rule)}
-
-  .card .open{
-    margin-top:4px;display:inline-flex;align-items:center;justify-content:space-between;
-    padding:14px 18px;border:1px solid var(--ink);border-radius:999px;
-    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  .story .visual{position:relative;aspect-ratio:1/1}
+  .story .visual .a{position:absolute;left:0;top:0;width:70%;aspect-ratio:1/1.1}
+  .story .visual .a .ph{position:absolute;inset:0;border:0}
+  .story .visual .b{position:absolute;right:0;bottom:0;width:62%;aspect-ratio:4/5}
+  .story .visual .b .ph{position:absolute;inset:0;border:0}
+  .story .visual .quote{
+    position:absolute;left:50%;bottom:6%;transform:translateX(-30%);
+    background:var(--cream);border:1px solid var(--umber);padding:18px 22px;max-width:280px;
+    font-family:var(--display);font-style:italic;font-size:22px;line-height:1.2;color:var(--umber);
   }
-  .card.dark .open{background:var(--ink);color:#EDE6D5}
+  .story .visual .quote small{display:block;font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber-3);margin-top:10px}
+  .story .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+  .story h2{font-family:var(--display);font-size:64px;line-height:1;letter-spacing:-.01em;margin:0 0 24px;font-weight:400}
+  .story h2 em{font-style:italic;color:var(--terra)}
+  .story p{color:var(--umber-2);font-size:16.5px;line-height:1.7;margin:0 0 18px;max-width:46ch}
+  .story .sign{font-family:var(--display);font-style:italic;font-size:24px;color:var(--terra);margin-top:8px}
 
-  /* per-card accent */
-  .card.editorial { background:#FBF8F1 }
-  .card.editorial .top b, .card.editorial h2 em { color:#4C5740 }
-  .card.editorial .swatches span:nth-child(1){background:#F4EFE4}
-  .card.editorial .swatches span:nth-child(2){background:#ECE5D5}
-  .card.editorial .swatches span:nth-child(3){background:#4C5740}
-  .card.editorial .swatches span:nth-child(4){background:#C25E4F}
-  .card.editorial .swatches span:nth-child(5){background:#1A1815}
+  /* ============ PRESS ============ */
+  .press{padding:120px 40px;text-align:center}
+  .press .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--terra);margin-bottom:18px}
+  .press h2{font-family:var(--display);font-size:72px;line-height:.96;margin:0 auto 48px;letter-spacing:-.01em;max-width:14ch;font-weight:400}
+  .press h2 em{font-style:italic;color:var(--terra)}
+  .press .logos{
+    display:grid;grid-template-columns:repeat(5,1fr);
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  }
+  .press .logos div{
+    padding:34px 14px;text-align:center;
+    font-family:var(--display);font-size:24px;color:var(--umber-2);
+    border-right:1px solid var(--rule);
+  }
+  .press .logos div:last-child{border-right:0}
+  .press .logos small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber-3);margin-top:6px}
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:64px;text-align:left}
+  .quote-card{background:var(--cream);border:1px solid var(--rule);padding:32px;border-radius:8px;position:relative}
+  .quote-card .mark{font-family:var(--display);font-style:italic;font-size:80px;line-height:.4;color:var(--terra);display:block;margin-bottom:8px}
+  .quote-card p{font-family:var(--display);font-size:22px;line-height:1.32;margin:0 0 22px;font-weight:400}
+  .quote-card .src{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber-3)}
 
-  .card.noir { background:#161310; color:#EDE6D5;border-color:rgba(237,230,213,.14) }
-  .card.noir .top { color:#7A7160;border-color:rgba(237,230,213,.14) }
-  .card.noir .top b{color:#C7A878}
-  .card.noir h2{color:#EDE6D5}
-  .card.noir h2 em{color:#C7A878}
-  .card.noir .sub{color:#B3A98F}
-  .card.noir .specs{border-color:rgba(237,230,213,.14)}
-  .card.noir .specs > div{border-color:rgba(237,230,213,.10);color:#B3A98F}
-  .card.noir .specs > div:nth-child(odd){border-right-color:rgba(237,230,213,.10)}
-  .card.noir .specs span{color:#7A7160}
-  .card.noir .specs b{color:#EDE6D5}
-  .card.noir .swatches span{border-color:rgba(237,230,213,.2)}
-  .card.noir .swatches span:nth-child(1){background:#0C0B0A}
-  .card.noir .swatches span:nth-child(2){background:#1B1813}
-  .card.noir .swatches span:nth-child(3){background:#C7A878}
-  .card.noir .swatches span:nth-child(4){background:#E5CFA1}
-  .card.noir .swatches span:nth-child(5){background:#EDE6D5}
-  .card.noir .open{border-color:#C7A878;background:#C7A878;color:#1A1209}
-  .card.noir .frame{border-color:rgba(237,230,213,.14)}
+  /* ============ FOOTER ============ */
+  footer{padding:96px 40px 32px;background:var(--umber);color:var(--cream);position:relative;overflow:hidden}
+  footer::before{
+    content:"";position:absolute;left:-200px;bottom:-200px;width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(closest-side, color-mix(in oklab, var(--terra) 24%, transparent), transparent);
+    pointer-events:none;
+  }
+  .foot-headline{font-family:var(--display);font-size:150px;line-height:.9;letter-spacing:-.012em;margin:0 0 56px;font-weight:400;position:relative}
+  .foot-headline em{font-style:italic;color:var(--terra)}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;border-top:1px solid rgba(251,245,233,.16);padding-top:36px;position:relative}
+  .foot-grid h4{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin:0 0 18px}
+  .foot-grid p{margin:0 0 16px;color:rgba(251,245,233,.7);max-width:36ch}
+  .foot-grid ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:14px;color:rgba(251,245,233,.78)}
+  .foot-grid .news{display:flex;border-bottom:1px solid var(--terra);padding-bottom:8px;max-width:380px}
+  .foot-grid .news input{flex:1;background:transparent;border:0;font:inherit;color:var(--cream);outline:none}
+  .foot-grid .news input::placeholder{color:rgba(251,245,233,.4)}
+  .foot-grid .news button{color:var(--terra);font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
+  .foot-bottom{margin-top:48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(251,245,233,.5);position:relative}
 
-  .card.desert { background:#F6EFE0 }
-  .card.desert .top b{color:#C2693F}
-  .card.desert h2 em{color:#C2693F}
-  .card.desert .swatches span:nth-child(1){background:#F6EFE0}
-  .card.desert .swatches span:nth-child(2){background:#EDE1CB}
-  .card.desert .swatches span:nth-child(3){background:#C2693F}
-  .card.desert .swatches span:nth-child(4){background:#7B7A3E}
-  .card.desert .swatches span:nth-child(5){background:#3A2A1F}
-  .card.desert .open{background:#C2693F;color:#FBF5E9;border-color:#C2693F}
+  /* Mobile nav toggle (hidden on desktop) */
+  .nav-toggle{display:none;width:42px;height:42px;border:1px solid var(--rule);border-radius:50%;align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer}
+  .nav-toggle span{display:block;width:18px;height:1.5px;background:var(--umber)}
+  body[data-menu="open"] .nav .links{display:flex}
 
-  /* footer */
-  .foot{
-    padding:32px 48px;border-top:1px solid var(--rule);
-    display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
+  /* ============================================================
+     MOTION SYSTEM — cohesion is the brief.
+     Custom easing curve everywhere, durations on a small scale.
+     Reads before the size-based media queries so they can override
+     motion where the mobile layout reflows the hero from absolute
+     overlapping images into a grid.
+     ============================================================ */
+  :root{
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-soft: cubic-bezier(0.32, 0.72, 0, 1);
+    --dur-press: 160ms;
+    --dur-quick: 200ms;
+    --dur-base:  280ms;
+    --dur-reveal: 720ms;
   }
 
-  .legend{
-    padding:0 48px 16px;display:grid;grid-template-columns:repeat(4,auto);gap:36px;
-    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+  /* Pressable — specify exact properties (no `all`), no keyframes */
+  .btn, .wa, .pcard .add, .pcard, .occ-card,
+  .best-head .filter button, .nav .right .bag, .nav .right .pill,
+  .foot-grid .news button, .quote-card{
+    transition: transform var(--dur-press) var(--ease-out),
+                background-color var(--dur-quick) var(--ease-out),
+                color var(--dur-quick) var(--ease-out),
+                border-color var(--dur-quick) var(--ease-out),
+                box-shadow var(--dur-base) var(--ease-out);
   }
-  .legend > div{display:flex;gap:10px;align-items:center}
-  .legend b{color:var(--ink);font-family:var(--display);font-size:18px;text-transform:none;letter-spacing:0;font-weight:400}
+  .btn, .wa, .pcard .add, .best-head .filter button,
+  .foot-grid .news button, .nav .links a{ cursor: pointer; }
 
-  .note{
-    padding:14px 22px;background:var(--bg-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
-    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
-    text-align:center;
+  .btn:active,
+  .wa:active,
+  .pcard .add:active,
+  .best-head .filter button:active,
+  .foot-grid .news button:active{ transform: scale(0.97); }
+  .occ-card:active, .pcard:active{ transform: scale(0.99); }
+
+  /* Hover — gated to true pointer devices to avoid sticky tap states */
+  @media (hover: hover) and (pointer: fine){
+    .btn.terra:hover{ background: var(--terra-2); border-color: var(--terra-2); }
+    .btn.primary:hover{ filter: brightness(1.08); }
+    .btn.ghost:hover{ background: color-mix(in oklab, var(--umber) 6%, transparent); }
+
+    .nav .links a{ position: relative; }
+    .nav .links a::after{
+      content:""; position:absolute; left:0; right:0; bottom:-6px;
+      height:1px; background: currentColor; transform-origin: left;
+      transform: scaleX(0);
+      transition: transform var(--dur-base) var(--ease-out);
+    }
+    .nav .links a:hover::after{ transform: scaleX(1); }
+
+    .pcard .image img, .pcard .image .ph{
+      transition: transform 700ms var(--ease-out), filter 700ms var(--ease-out);
+    }
+    .pcard:hover .image img,
+    .pcard:hover .image .ph{ transform: scale(1.04); }
+    .pcard .add{ transition: transform var(--dur-press) var(--ease-out), background-color var(--dur-quick) var(--ease-out); }
+    .pcard:hover .add{ background: var(--terra-2); }
+
+    .occ-card{ transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+    .occ-card .ph{ transition: transform 800ms var(--ease-out); }
+    .occ-card:hover{ transform: translateY(-6px); box-shadow: 0 30px 60px -36px rgba(58,42,31,.45); }
+    .occ-card:hover .ph{ transform: scale(1.06); }
+
+    .quote-card:hover{ transform: translateY(-2px); box-shadow: 0 24px 60px -32px rgba(58,42,31,.22); }
   }
 
-  /* Hover-only iframe loading */
-  .card .frame .placeholder{
-    position:absolute;inset:0;display:grid;place-items:center;
-    font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);
-    background:repeating-linear-gradient(135deg, rgba(26,24,21,.05) 0 1px, transparent 1px 14px);
+  /* Live status dots — almost imperceptible breath */
+  @keyframes bloom-pulse{
+    0%, 100%{ box-shadow: 0 0 0 4px rgba(90,140,90,.18); }
+    50%     { box-shadow: 0 0 0 7px rgba(90,140,90,.08); }
+  }
+  .nav .right .pill::before,
+  .concierge .wa .dot{
+    animation: bloom-pulse 2.8s var(--ease-in-out) infinite;
+  }
+
+  /* Stamps drift — they look hand-placed, not glued down */
+  @keyframes drift-r{
+    0%, 100%{ transform: rotate(8deg)   translateY(0); }
+    50%     { transform: rotate(8deg)   translateY(-4px); }
+  }
+  @keyframes drift-l{
+    0%, 100%{ transform: rotate(-12deg) translateY(0); }
+    50%     { transform: rotate(-12deg) translateY(-4px); }
+  }
+  .hero-duo .imgs .stamp{ animation: drift-r 6.5s var(--ease-in-out) infinite; }
+  .featured .img-stack .seal{ animation: drift-l 7s   var(--ease-in-out) infinite; }
+  .concierge .stamp{           animation: drift-r 7.5s var(--ease-in-out) infinite; }
+
+  /* Hero parallax — two channels in one translate:
+       --px / --py  → spring-damped mouse offset (JS lerp)
+       --sy         → raw scroll position in px
+     No CSS transition: scroll must be 1:1, JS owns mouse smoothing. */
+  .hero-duo .imgs{ --px: 0; --py: 0; --sy: 0; }
+  .hero-duo .imgs .a{
+    translate:
+      calc(var(--px) *  10px)
+      calc(var(--py) *   8px + var(--sy) * -0.08px);
+  }
+  .hero-duo .imgs .b{
+    translate:
+      calc(var(--px) * -16px)
+      calc(var(--py) * -12px + var(--sy) * -0.20px);
+  }
+
+  /* Hero entrance — cascade for each composition variant */
+  @keyframes hero-rise{
+    from{ opacity: 0; translate: 0 22px; }
+    to  { opacity: 1; translate: 0 0; }
+  }
+  @keyframes hero-imgs-rise{
+    from{ opacity: 0; translate: 0 24px; scale: 0.99; }
+    to  { opacity: 1; translate: 0 0;    scale: 1; }
+  }
+  body[data-hero="duo"] .hero-duo .eyebrow,
+  body[data-hero="duo"] .hero-duo h1,
+  body[data-hero="duo"] .hero-duo .lede,
+  body[data-hero="duo"] .hero-duo .cta-row,
+  body[data-hero="duo"] .hero-duo .meta-row{
+    animation: hero-rise 820ms var(--ease-out) both;
+  }
+  body[data-hero="duo"] .hero-duo .eyebrow{ animation-delay:  60ms; }
+  body[data-hero="duo"] .hero-duo h1      { animation-delay: 120ms; }
+  body[data-hero="duo"] .hero-duo .lede   { animation-delay: 260ms; }
+  body[data-hero="duo"] .hero-duo .cta-row{ animation-delay: 360ms; }
+  body[data-hero="duo"] .hero-duo .meta-row{ animation-delay: 440ms; }
+  body[data-hero="duo"] .hero-duo .imgs   { animation: hero-imgs-rise 1100ms var(--ease-out) 180ms both; }
+
+  body[data-hero="circle"] .hero-circle .frame{ animation: hero-imgs-rise 1100ms var(--ease-out) 100ms both; }
+  body[data-hero="circle"] .hero-circle h1,
+  body[data-hero="circle"] .hero-circle p,
+  body[data-hero="circle"] .hero-circle .cta-row{ animation: hero-rise 800ms var(--ease-out) both; }
+  body[data-hero="circle"] .hero-circle h1{ animation-delay: 240ms; }
+  body[data-hero="circle"] .hero-circle p { animation-delay: 360ms; }
+  body[data-hero="circle"] .hero-circle .cta-row{ animation-delay: 460ms; }
+
+  body[data-hero="postcard"] .hero-postcard .card,
+  body[data-hero="postcard"] .hero-postcard .image{ animation: hero-rise 900ms var(--ease-out) both; }
+  body[data-hero="postcard"] .hero-postcard .card { animation-delay: 100ms; }
+  body[data-hero="postcard"] .hero-postcard .image{ animation-delay: 220ms; }
+
+  /* Scroll reveal — opacity + small rise */
+  [data-reveal]{
+    opacity: 0; translate: 0 16px;
+    transition: opacity var(--dur-reveal) var(--ease-out),
+                translate var(--dur-reveal) var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  [data-reveal="in"]{ opacity: 1; translate: 0 0; }
+
+  /* Clip reveal — applied to the image-bearing child, not the observed
+     parent (clip-path on the IO target makes Chromium report ratio:0). */
+  .featured  [data-reveal-clip] .a,
+  .concierge [data-reveal-clip] .ph,
+  .story     [data-reveal-clip] .a,
+  .story     [data-reveal-clip] .b{
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1000ms var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .featured  [data-reveal-clip="in"] .a,
+  .concierge [data-reveal-clip="in"] .ph,
+  .story     [data-reveal-clip="in"] .a{ clip-path: inset(0 0 0 0); }
+  .story     [data-reveal-clip="in"] .b{
+    clip-path: inset(0 0 0 0);
+    transition-delay: 180ms;
+  }
+
+  /* Stagger across grids — short delays */
+  .best-grid > *:nth-child(1){ --reveal-delay: 0ms; }
+  .best-grid > *:nth-child(2){ --reveal-delay: 60ms; }
+  .best-grid > *:nth-child(3){ --reveal-delay: 120ms; }
+  .best-grid > *:nth-child(4){ --reveal-delay: 180ms; }
+  .best-grid > *:nth-child(5){ --reveal-delay: 240ms; }
+  .best-grid > *:nth-child(6){ --reveal-delay: 300ms; }
+
+  .occ-rail > *:nth-child(1){ --reveal-delay: 0ms; }
+  .occ-rail > *:nth-child(2){ --reveal-delay: 50ms; }
+  .occ-rail > *:nth-child(3){ --reveal-delay: 100ms; }
+  .occ-rail > *:nth-child(4){ --reveal-delay: 150ms; }
+  .occ-rail > *:nth-child(5){ --reveal-delay: 200ms; }
+  .occ-rail > *:nth-child(6){ --reveal-delay: 250ms; }
+  .occ-rail > *:nth-child(7){ --reveal-delay: 300ms; }
+  .occ-rail > *:nth-child(8){ --reveal-delay: 350ms; }
+
+  .press .logos > *:nth-child(1){ --reveal-delay: 0ms; }
+  .press .logos > *:nth-child(2){ --reveal-delay: 60ms; }
+  .press .logos > *:nth-child(3){ --reveal-delay: 120ms; }
+  .press .logos > *:nth-child(4){ --reveal-delay: 180ms; }
+  .press .logos > *:nth-child(5){ --reveal-delay: 240ms; }
+
+  .quotes > *:nth-child(1){ --reveal-delay: 0ms; }
+  .quotes > *:nth-child(2){ --reveal-delay: 100ms; }
+  .quotes > *:nth-child(3){ --reveal-delay: 200ms; }
+
+  /* Focus states */
+  .btn:focus-visible, .wa:focus-visible, .pcard .add:focus-visible,
+  .occ-card:focus-visible, .best-head .filter button:focus-visible,
+  .nav .links a:focus-visible,
+  .foot-grid .news input:focus-visible, .foot-grid .news button:focus-visible{
+    outline: 1.5px solid var(--terra);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ============================================ */
+  /* TABLET  ≤ 1100px                             */
+  /* ============================================ */
+  @media (max-width: 1100px){
+    .nav{grid-template-columns:auto 1fr auto;gap:24px;padding:20px 24px 18px}
+    .nav .links{gap:22px;font-size:13px}
+    .brand img{height:48px}
+
+    /* Hero · Duo */
+    .hero{padding:0 24px}
+    .hero-duo{grid-template-columns:1fr 1fr;gap:40px;padding:56px 0 72px}
+    .hero-duo h1{font-size:84px}
+    .hero-duo p.lede{font-size:16px;margin-bottom:28px}
+    .hero-duo .imgs{height:520px}
+    .hero-duo .imgs .stamp{width:110px;height:110px}
+    .hero-duo .imgs .stamp b{font-size:24px}
+    .hero-duo .meta-row{gap:24px}
+    .hero-duo .meta-row .v{font-size:20px}
+
+    /* Hero · Circle */
+    .hero-circle{padding:48px 0 64px}
+    .hero-circle .frame{width:520px;height:520px}
+    .hero-circle h1{font-size:78px}
+    .hero-circle .corner-l,.hero-circle .corner-r{display:none}
+
+    /* Hero · Postcard */
+    .hero-postcard{grid-template-columns:1fr 1fr;gap:24px;padding:32px 0 56px}
+    .hero-postcard .card{padding:32px}
+    .hero-postcard h1{font-size:60px}
+
+    .strip{padding:16px 24px;gap:24px;flex-wrap:wrap;font-size:10px}
+
+    .featured{padding:88px 24px}
+    .featured .inner{gap:48px}
+    .featured h2{font-size:64px}
+    .featured .price-row .num{font-size:42px}
+
+    .occasions{padding:88px 24px}
+    .occ-head{grid-template-columns:1fr;gap:24px}
+    .occ-head h2{font-size:56px}
+    .occ-rail{grid-template-columns:repeat(3,1fr)}
+
+    .best{padding:88px 24px}
+    .best-head h2{font-size:60px}
+    .best-grid{grid-template-columns:repeat(2,1fr);gap:28px}
+
+    .concierge{padding:88px 24px}
+    .concierge .grid{gap:48px}
+    .concierge h3{font-size:60px}
+
+    .story{padding:88px 24px;grid-template-columns:1fr 1fr;gap:48px}
+    .story h2{font-size:48px}
+
+    .press{padding:88px 24px}
+    .press h2{font-size:54px}
+    .press .logos{grid-template-columns:repeat(3,1fr)}
+    .press .logos div:nth-child(3){border-right:0}
+    .press .logos div:nth-child(n+4){border-top:1px solid var(--rule)}
+    .quotes{grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+    .quotes .quote-card:last-child{display:none}
+
+    footer{padding:72px 24px 28px}
+    .foot-headline{font-size:104px;margin-bottom:40px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:36px}
+  }
+
+  /* ============================================ */
+  /* MOBILE  ≤ 720px                              */
+  /* ============================================ */
+  @media (max-width: 720px){
+    body{font-size:14.5px}
+
+    /* Nav: brand left, toggle right */
+    .nav{grid-template-columns:1fr auto;gap:12px;padding:16px 18px 14px}
+    .nav .links{
+      display:none;
+      grid-column:1 / -1;
+      flex-direction:column;align-items:flex-start;gap:14px;
+      padding:8px 0 6px;font-size:15px;
+    }
+    body[data-menu="open"] .nav .links{display:flex}
+    .nav .right{gap:14px;font-size:12px}
+    .nav .right .pill{display:none}
+    .nav-toggle{display:flex}
+    .brand img{height:40px}
+
+    /* Hero · Duo — stack */
+    .hero{padding:0 18px}
+    .hero-duo{grid-template-columns:1fr;gap:36px;padding:32px 0 56px}
+    .hero-duo .eyebrow{margin-bottom:20px;font-size:10px;letter-spacing:.18em}
+    .hero-duo .eyebrow .glyph{width:32px;height:32px;font-size:15px}
+    .hero-duo h1{font-size:54px;margin-bottom:20px}
+    .hero-duo h1 .ul{border-bottom-width:2px;padding-bottom:3px}
+    .hero-duo p.lede{font-size:15.5px;margin-bottom:24px}
+    .hero-duo .cta-row{flex-wrap:wrap;gap:10px;margin-bottom:32px}
+    .btn{padding:12px 18px;font-size:12.5px}
+    .hero-duo .meta-row{grid-template-columns:1fr 1fr;gap:18px 24px;padding-top:18px;max-width:none}
+    .hero-duo .meta-row .v{font-size:18px}
+    .hero-duo .imgs{height:auto;display:grid;grid-template-columns:5fr 4fr;grid-template-rows:auto auto;gap:12px;position:relative}
+    .hero-duo .imgs .a,.hero-duo .imgs .b{position:relative;width:100%;left:auto;right:auto;top:auto;bottom:auto;aspect-ratio:4/5;box-shadow:0 16px 40px -20px rgba(58,42,31,.4)}
+    .hero-duo .imgs .a{grid-column:1 / 2;grid-row:1 / 3}
+    .hero-duo .imgs .b{grid-column:2 / 3;grid-row:2 / 3;aspect-ratio:1/1.05}
+    .hero-duo .imgs .stamp{
+      grid-column:2 / 3;grid-row:1 / 2;
+      position:relative;width:auto;height:auto;
+      transform:none;border-radius:8px;
+      padding:18px 14px;font-size:9px;
+      align-self:start;
+    }
+    .hero-duo .imgs .stamp b{font-size:22px}
+    /* Motion: hero reflows to a grid here — the absolute-overlap parallax
+       and stamp drift don't make sense in the stacked layout. */
+    .hero-duo .imgs .a,
+    .hero-duo .imgs .b{ translate: 0; }
+    .hero-duo .imgs .stamp{ animation: none; }
+
+    /* Hero · Circle */
+    .hero-circle{padding:32px 0 48px}
+    .hero-circle .frame{width:88vw;height:88vw;max-width:520px;max-height:520px}
+    .hero-circle h1{font-size:48px;margin:24px 0 14px}
+    .hero-circle p{font-size:15.5px;padding:0 8px}
+    .hero-circle .cta-row{flex-direction:column;gap:10px;align-items:stretch;padding:0 32px}
+
+    /* Hero · Postcard */
+    .hero-postcard{grid-template-columns:1fr;gap:20px;padding:24px 0 48px}
+    .hero-postcard .card{padding:24px}
+    .hero-postcard .card::before{left:14px;right:14px;top:14px;bottom:14px}
+    .hero-postcard h1{font-size:44px;margin:18px 0 12px}
+    .hero-postcard .card .top .stamp{width:54px;height:64px;font-size:8px}
+    .hero-postcard .card .cta-row{flex-wrap:wrap;gap:10px;margin-top:20px}
+
+    /* Strip */
+    .strip{padding:14px 18px;gap:12px 18px;font-size:9.5px;letter-spacing:.16em}
+    .strip span{gap:10px}
+
+    /* Featured */
+    .featured{padding:64px 18px}
+    .featured::after{width:280px;height:280px;right:-100px;top:-100px}
+    .featured .inner{grid-template-columns:1fr;gap:40px}
+    .featured h2{font-size:48px}
+    .featured .specs > div{padding:14px 0;font-size:12px}
+    .featured .specs b{font-size:16px}
+    .featured .price-row{margin:24px 0 18px;padding-top:18px;gap:12px}
+    .featured .price-row .num{font-size:38px}
+    .featured .price-row .aed{font-size:10px}
+    .featured .img-stack .seal{width:96px;height:96px;left:-12px;bottom:24px;font-size:8.5px}
+    .featured .img-stack .seal b{font-size:22px}
+    .featured .cta-row{flex-wrap:wrap;gap:10px}
+
+    /* Occasions */
+    .occasions{padding:64px 18px}
+    .occ-head h2{font-size:42px}
+    .occ-head .aside{font-size:14.5px}
+    .occ-rail{grid-template-columns:1fr 1fr;gap:12px}
+    .occ-card .label .name{font-size:20px}
+    .occ-card .label .sub{font-size:9px}
+    .occ-card .arrow{width:28px;height:28px;font-size:12px}
+
+    /* Bestsellers */
+    .best{padding:64px 18px}
+    .best-head{grid-template-columns:1fr;gap:18px;padding-bottom:18px;margin-bottom:32px}
+    .best-head h2{font-size:44px}
+    .best-head .filter{flex-wrap:wrap;gap:8px;font-size:10px}
+    .best-head .filter button{padding:6px 10px}
+    .best-grid{grid-template-columns:1fr;gap:36px}
+    .pcard .name{font-size:22px}
+    .pcard .price{font-size:20px}
+
+    /* Concierge */
+    .concierge{padding:64px 18px}
+    .concierge::before{width:320px;height:320px;left:-160px;top:-160px}
+    .concierge .grid{grid-template-columns:1fr;gap:36px}
+    .concierge h3{font-size:42px;margin-bottom:18px}
+    .concierge p{font-size:15.5px;margin-bottom:24px}
+    .concierge .wa{padding:14px 20px;font-size:10px;gap:10px;flex-wrap:wrap}
+    .concierge .wa b{font-size:17px}
+    .concierge .visual{aspect-ratio:4/5}
+    .concierge .chat{left:18px;right:18px;padding:14px 16px;font-size:13px}
+    .concierge .stamp{width:100px;height:100px;right:-10px;top:18px;font-size:8.5px}
+    .concierge .stamp b{font-size:22px}
+
+    /* Story */
+    .story{padding:64px 18px;grid-template-columns:1fr;gap:40px}
+    .story h2{font-size:38px}
+    .story p{font-size:15.5px}
+    .story .visual{aspect-ratio:auto;height:auto;display:grid;grid-template-columns:5fr 4fr;grid-template-rows:auto auto;gap:12px}
+    .story .visual .a,.story .visual .b{position:relative;width:100%;left:auto;right:auto;top:auto;bottom:auto}
+    .story .visual .a{grid-column:1 / 2;grid-row:1 / 3;aspect-ratio:4/5}
+    .story .visual .b{grid-column:2 / 3;grid-row:1 / 2;aspect-ratio:1/1}
+    .story .visual .quote{
+      position:relative;left:auto;bottom:auto;transform:none;
+      grid-column:2 / 3;grid-row:2 / 3;
+      max-width:none;font-size:16px;padding:14px 16px;align-self:start;
+    }
+
+    /* Press */
+    .press{padding:64px 18px}
+    .press h2{font-size:40px;margin-bottom:32px}
+    .press .logos{grid-template-columns:1fr 1fr}
+    .press .logos div{font-size:18px;padding:22px 10px;border-right:1px solid var(--rule)}
+    .press .logos div:nth-child(odd){border-right:1px solid var(--rule)}
+    .press .logos div:nth-child(even){border-right:0}
+    .press .logos div:nth-child(n+3){border-top:1px solid var(--rule)}
+    .press .logos div:last-child{display:none} /* 5 logos → show 4 in 2x2 */
+    .quotes{grid-template-columns:1fr;gap:18px;margin-top:36px}
+    .quotes .quote-card{padding:22px}
+    .quotes .quote-card:last-child{display:block} /* override the tablet rule above for mobile */
+    .quote-card p{font-size:17px}
+
+    /* Footer */
+    footer{padding:56px 18px 24px}
+    .foot-headline{font-size:64px;margin-bottom:32px;line-height:.94}
+    .foot-grid{grid-template-columns:1fr;gap:28px;padding-top:24px}
+    .foot-grid h4{margin-bottom:12px}
+    .foot-grid .news{max-width:none}
+    .foot-bottom{flex-direction:column;gap:8px;margin-top:32px}
+  }
+
+  /* tiny phones */
+  @media (max-width: 380px){
+    .hero-duo h1{font-size:46px}
+    .featured h2{font-size:40px}
+    .occ-head h2,.best-head h2{font-size:36px}
+    .concierge h3{font-size:36px}
+    .foot-headline{font-size:54px}
+    .occ-rail{grid-template-columns:1fr}
+  }
+
+  /* Reduced motion — keep opacity, kill movement */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+    [data-reveal], [data-reveal-clip] .a, [data-reveal-clip] .b, [data-reveal-clip] .ph{
+      opacity: 1 !important; translate: 0 0 !important; clip-path: none !important;
+    }
+    .nav .right .pill::before, .concierge .wa .dot,
+    .hero-duo .imgs .stamp, .featured .img-stack .seal, .concierge .stamp{
+      animation: none !important;
+    }
   }
 </style>
 </head>
-<body>
+<body data-palette="oasis" data-type="presque" data-hero="duo">
 
-<header class="head">
-  <div class="brand">21Bloom<small>Atelier · Dubai</small></div>
-  <div class="meta">
-    <b>Homepage explorations</b>
-    Three directions · May 2026<br>
-    For: founder, marketing<br>
-    Designer: studio
+<header class="nav">
+  <a class="brand" href="#">
+    <img src="images/logo.png" alt="No.21 Blooms · Dubai" />
+  </a>
+  <nav class="links">
+    <a href="#">Bouquets</a>
+    <a href="#">Occasions</a>
+    <a href="#">Subscriptions</a>
+    <a href="#">Concierge</a>
+    <a href="#">Journal</a>
+  </nav>
+  <div class="right">
+    <span class="pill">Open · Same-day until 18:00</span>
+    <a href="#">Sign in</a>
+    <a class="bag" href="#">Bag <span class="count">2</span></a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.body.dataset.menu = document.body.dataset.menu === 'open' ? 'closed' : 'open';">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<section class="intro">
-  <h1 class="lead">Three ways the home page<br>could <em>feel.</em></h1>
-  <div class="body">
-    <span class="tag">— A short note from the studio —</span>
-    <p>Each concept hits the same brief — same-day Dubai gifting, premium feel, the four sections you asked for — but pushes a different emotional register. Editorial reads like a quiet magazine; Noir leans into after-dark indulgence; Desert is the warmest, most Gulf-rooted of the three.</p>
-    <p>Every concept ships with three palette swaps, three type pairings and three hero compositions you can toggle live via the Tweaks panel — so a final direction can be a remix of any two.</p>
+<!-- ============ HERO ============ -->
+<section class="hero">
+
+  <!-- A · Duo -->
+  <div class="hero-duo">
+    <div>
+      <div class="eyebrow"><span class="glyph">❋</span>Volume XXI · Spring '26 in Dubai</div>
+      <h1>The garden,<br>delivered <em>before</em><br><span class="ul">sundown.</span></h1>
+      <p class="lede">A small atelier in Al Quoz arranging seasonal stems for the table set for two, the apology and the welcome home — across Dubai, the same day.</p>
+      <div class="cta-row">
+        <a class="btn terra" href="#">Shop the season →</a>
+        <a class="btn ghost" href="#">Send a gift</a>
+      </div>
+      <div class="meta-row">
+        <div><span class="l">Cut-off</span><span class="v">18:00 GST</span></div>
+        <div><span class="l">Compositions</span><span class="v">21 in season</span></div>
+        <div><span class="l">Concierge</span><span class="v">9 min reply</span></div>
+      </div>
+    </div>
+    <div class="imgs">
+      <div class="a"><img src="images/hero-bouquet.jpg" alt="Tahani — bouquet of the week" /></div>
+      <div class="b"><img src="images/hero-bouquet-detail.jpg" alt="Tahani — detail" /></div>
+      <div class="stamp">Bouquet<br>of the week<br><b>Tahani</b></div>
+    </div>
+  </div>
+
+  <!-- B · Circle -->
+  <div class="hero-circle">
+    <div class="frame">
+      <img src="images/hero-bouquet.jpg" alt="Tahani — bouquet of the week" />
+    </div>
+    <div class="corner-l">Bouquet of the week<b>Tahani</b>21 stems · hand-tied · linen</div>
+    <div class="corner-r">Same-day, all of Dubai<b>18:00 GST</b>Order by · free delivery</div>
+    <h1>The garden,<br>delivered <em>before sundown</em>.</h1>
+    <p>A small atelier in Al Quoz arranging seasonal stems for Dubai's quiet moments — across the city, the same day.</p>
+    <div class="cta-row">
+      <a class="btn terra" href="#">Shop the season →</a>
+      <a class="btn ghost" href="#">Send a gift</a>
+    </div>
+  </div>
+
+  <!-- C · Postcard -->
+  <div class="hero-postcard">
+    <div class="card">
+      <div class="top">
+        <div>No.21 Blooms · Atelier<br>Al Quoz 1, Dubai<br>11.05.26</div>
+        <div class="stamp">Same-day<br>before<br>18:00</div>
+      </div>
+      <div>
+        <h1>The garden,<br>delivered <em>before</em><br>sundown.</h1>
+        <p>Cut in Holland this morning. Composed in Al Quoz this afternoon. At your door before the city has finished dinner.</p>
+        <p>Yours, with very seasonal stems —</p>
+        <div class="sign">— the atelier.</div>
+      </div>
+      <div class="cta-row">
+        <a class="btn terra" href="#">Shop the season →</a>
+        <a class="btn ghost" href="#">Send a gift</a>
+      </div>
+    </div>
+    <div class="image">
+      <span class="tag">Bouquet of the week</span>
+      <img src="images/hero-bouquet.jpg" alt="Tahani — bouquet of the week" />
+    </div>
   </div>
 </section>
 
-<div class="legend">
-  <div>Concept count · <b>03</b></div>
-  <div>Hero variants each · <b>03</b></div>
-  <div>Palette swaps each · <b>04</b></div>
-  <div>Type pairings each · <b>03</b></div>
+<!-- ============ STRIP ============ -->
+<div class="strip">
+  <span>Same-day across Dubai</span>
+  <span>Order by 18:00 GST</span>
+  <span>Free hand-tied wrap</span>
+  <span>Concierge on WhatsApp · 9 min reply</span>
 </div>
 
-<section class="grid">
-
-  <!-- ============ 01 EDITORIAL ============ -->
-  <a class="card editorial" href="01-editorial.html">
-    <div class="top"><span>Concept 01</span><b>Editorial</b></div>
-    <div class="frame">
-      <iframe src="01-editorial.html" scrolling="no" loading="lazy" tabindex="-1"></iframe>
-      <div class="scrim"></div>
-    </div>
-    <div class="body">
-      <h2>Editorial — <em>quiet</em><br>like a magazine.</h2>
-      <p class="sub">Ivory paper stock, ink black type, a single warm accent. Serifs do the heavy lifting; everything else gets out of the way.</p>
-      <div class="swatches" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
+<!-- ============ FEATURED ============ -->
+<section class="featured">
+  <div class="inner">
+    <div>
+      <div class="label">Bouquet of the week · <span class="num">№21</span></div>
+      <h2>Tahani —<br>a quiet<br><em>celebration.</em></h2>
+      <p>Garden roses in three shades of dusk, ranunculus from a Tuscan grower, ammi majus for the breath of air. Hand-tied in unbleached linen, sealed in wax. Cut in Holland this morning.</p>
       <div class="specs">
-        <div><span>Mood</span><b>Aesop · Apartamento</b></div>
-        <div><span>Type</span><b>Cormorant · DM Sans</b></div>
-        <div><span>Palette</span><b>Bone + sage</b></div>
-        <div><span>Hero</span><b>Type-led split</b></div>
+        <div><span>Composition</span><b>21 stems</b></div>
+        <div><span>Vase life</span><b>7–9 days</b></div>
+        <div><span>Stem height</span><b>40–50 cm</b></div>
+        <div><span>Wrap</span><b>Linen + wax</b></div>
       </div>
-      <span class="open">Open concept 01 <span>→</span></span>
-    </div>
-  </a>
-
-  <!-- ============ 02 NOIR ============ -->
-  <a class="card noir dark" href="02-noir.html">
-    <div class="top"><span>Concept 02</span><b>Noir</b></div>
-    <div class="frame">
-      <iframe src="02-noir.html" scrolling="no" loading="lazy" tabindex="-1"></iframe>
-      <div class="scrim"></div>
-    </div>
-    <div class="body">
-      <h2>Noir — Dubai's<br><em>after-hours</em> florist.</h2>
-      <p class="sub">Black canvas, champagne italics, edition-of-60 stamps. Reads like a tasting menu you receive at midnight.</p>
-      <div class="swatches" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span>
+      <div class="price-row">
+        <span class="aed">AED</span><span class="num">480</span>
+        <span class="aed" style="margin-left:auto">free same-day delivery</span>
       </div>
-      <div class="specs">
-        <div><span>Mood</span><b>Quiet luxury · midnight</b></div>
-        <div><span>Type</span><b>Bodoni · Manrope</b></div>
-        <div><span>Palette</span><b>Onyx + champagne</b></div>
-        <div><span>Hero</span><b>Stage · poster · vault</b></div>
+      <div class="cta-row" style="display:flex;gap:14px">
+        <a class="btn terra" href="#">Add to bag</a>
+        <a class="btn ghost" href="#">See all bouquets</a>
       </div>
-      <span class="open">Open concept 02 <span>→</span></span>
     </div>
-  </a>
-
-  <!-- ============ 03 DESERT ============ -->
-  <a class="card desert" href="03-desert.html">
-    <div class="top"><span>Concept 03</span><b>Desert</b></div>
-    <div class="frame">
-      <iframe src="03-desert.html" scrolling="no" loading="lazy" tabindex="-1"></iframe>
-      <div class="scrim"></div>
+    <div class="img-stack">
+      <div class="a"><img src="images/tahani-product.jpg" alt="Tahani — a quiet celebration" /></div>
+      <div class="seal">Edition<br>of <b>60</b><br>this week</div>
     </div>
-    <div class="body">
-      <h2>Desert — warm,<br><em>Gulf-rooted</em>.</h2>
-      <p class="sub">Sand, cream and terracotta. Layered images, a postcard hero, a hand-written sign-off. The most Dubai-of-place of the three.</p>
-      <div class="swatches" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div class="specs">
-        <div><span>Mood</span><b>Atelier · in season</b></div>
-        <div><span>Type</span><b>Marcellus · Inter Tight</b></div>
-        <div><span>Palette</span><b>Sand + terracotta</b></div>
-        <div><span>Hero</span><b>Duo · circle · postcard</b></div>
-      </div>
-      <span class="open">Open concept 03 <span>→</span></span>
-    </div>
-  </a>
-
+  </div>
 </section>
 
-<div class="note">Each concept has its own Tweaks panel — toggle palette, typography and hero layout from inside.</div>
+<!-- ============ BESTSELLERS / SIGNATURES ============ -->
+<section class="best">
+  <div class="best-head">
+    <h2>The <em>signatures.</em></h2>
+    <div class="filter">
+      <button class="on">All</button>
+      <button>Roses</button>
+      <button>Peonies</button>
+      <button>Wild</button>
+      <button>Under AED 500</button>
+    </div>
+  </div>
+  <div class="best-grid">
 
-<footer class="foot">
-  <span>© 2026 21Bloom · Dubai</span>
-  <span>Three homepage concepts · May 2026</span>
+    <article class="pcard">
+      <div class="image">
+        <span class="badge">Bestseller</span>
+        <div class="ph rose"><span class="ph-tag">tahani</span></div>
+        <button class="add">+</button>
+      </div>
+      <div class="row">
+        <div class="name">Tahani <small>21 stems · hand-tied</small></div>
+        <div class="price">480 <small>AED</small></div>
+      </div>
+      <p class="desc">Garden roses in three shades of dusk with ammi majus.</p>
+    </article>
+
+    <article class="pcard">
+      <div class="image">
+        <span class="badge">New</span>
+        <div class="ph warm"><span class="ph-tag">mirage</span></div>
+        <button class="add">+</button>
+      </div>
+      <div class="row">
+        <div class="name">Mirage <small>Desert palette</small></div>
+        <div class="price">620 <small>AED</small></div>
+      </div>
+      <p class="desc">Toffee roses, butterscotch ranunculus, dried palm.</p>
+    </article>
+
+    <article class="pcard">
+      <div class="image">
+        <span class="badge">Editor</span>
+        <div class="ph umber"><span class="ph-tag">layl · night</span></div>
+        <button class="add">+</button>
+      </div>
+      <div class="row">
+        <div class="name">Layl <small>Moody · after-dark</small></div>
+        <div class="price">540 <small>AED</small></div>
+      </div>
+      <p class="desc">Black baccara, plum hellebore, chocolate cosmos.</p>
+    </article>
+
+    <article class="pcard">
+      <div class="image">
+        <span class="badge">Light</span>
+        <div class="ph cream"><span class="ph-tag">hawa · whites</span></div>
+        <button class="add">+</button>
+      </div>
+      <div class="row">
+        <div class="name">Hawa <small>Airy whites</small></div>
+        <div class="price">390 <small>AED</small></div>
+      </div>
+      <p class="desc">Cloud lisianthus, ammi, eucalyptus parvifolia.</p>
+    </article>
+
+    <article class="pcard">
+      <div class="image">
+        <span class="badge">Sun</span>
+        <div class="ph warm"><span class="ph-tag">shams</span></div>
+        <button class="add">+</button>
+      </div>
+      <div class="row">
+        <div class="name">Shams <small>Citrus &amp; ochre</small></div>
+        <div class="price">510 <small>AED</small></div>
+      </div>
+      <p class="desc">Toffee roses, marigold, ranunculus, mimosa.</p>
+    </article>
+
+    <article class="pcard">
+      <div class="image">
+        <span class="badge">Scented</span>
+        <div class="ph cream"><span class="ph-tag">yasmin</span></div>
+        <button class="add">+</button>
+      </div>
+      <div class="row">
+        <div class="name">Yasmin <small>Jasmine &amp; lily</small></div>
+        <div class="price">460 <small>AED</small></div>
+      </div>
+      <p class="desc">Arabian jasmine, casablanca lily, white freesia.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ OCCASIONS ============ -->
+<section class="occasions">
+  <div class="occ-head">
+    <div>
+      <div class="eyebrow"><span class="line"></span>Section II · Occasions</div>
+      <h2>For the moments<br>that <em>deserve</em><br>flowers.</h2>
+    </div>
+    <div class="aside">
+      Eight quietly considered edits for the calendar's tender corners. Each ships with a hand-written note from our atelier — never a printed card.
+      <br><a href="#">All occasions →</a>
+    </div>
+  </div>
+  <div class="occ-rail">
+    <a class="occ-card" href="#">
+      <div class="ph rose"><span class="ph-tag">romance</span></div>
+      <span class="num">01 / 08</span>
+      <div class="label"><span class="name">Romance</span><span class="sub">For her · For him</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph cream"><span class="ph-tag">anniversary</span></div>
+      <span class="num">02 / 08</span>
+      <div class="label"><span class="name">Anniversary</span><span class="sub">One year & beyond</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph olive"><span class="ph-tag">condolence</span></div>
+      <span class="num">03 / 08</span>
+      <div class="label"><span class="name">Condolence</span><span class="sub">With sympathy</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph warm"><span class="ph-tag">eid · ramadan</span></div>
+      <span class="num">04 / 08</span>
+      <div class="label"><span class="name">Eid · Ramadan</span><span class="sub">Limited edition</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph dune"><span class="ph-tag">new baby</span></div>
+      <span class="num">05 / 08</span>
+      <div class="label"><span class="name">New baby</span><span class="sub">Welcome</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph umber"><span class="ph-tag">birthday</span></div>
+      <span class="num">06 / 08</span>
+      <div class="label"><span class="name">Birthday</span><span class="sub">Many happy</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph olive"><span class="ph-tag">get well</span></div>
+      <span class="num">07 / 08</span>
+      <div class="label"><span class="name">Get well</span><span class="sub">Soon</span></div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="occ-card" href="#">
+      <div class="ph rose"><span class="ph-tag">just because</span></div>
+      <span class="num">08 / 08</span>
+      <div class="label"><span class="name">Just because</span><span class="sub">A small surprise</span></div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ CONCIERGE ============ -->
+<section class="concierge">
+  <div class="grid">
+    <div>
+      <div class="lbl"><span class="line"></span>By concierge</div>
+      <h3>Need it to feel<br><em>perfect</em>? Write to us.</h3>
+      <p>Tell us the occasion, the recipient and a budget. We'll send three composition options within nine minutes and deliver tonight — across Dubai, or to your hotel suite.</p>
+      <a class="wa" href="#">
+        <span class="dot"></span>
+        WhatsApp the atelier
+        <b>+971&nbsp;4&nbsp;000&nbsp;0021</b>
+      </a>
+    </div>
+    <div class="visual">
+      <div class="ph warm"><span class="ph-tag">concierge · photograph</span></div>
+      <div class="stamp">Reply<br>within<br><b>9 min</b></div>
+      <div class="chat">
+        <small>— Maya · 18:42 —</small>
+        Thank you so much — they arrived just as he sat down. He doesn't know what hit him.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="story">
+  <div class="visual">
+    <div class="a"><div class="ph dune"><span class="ph-tag">atelier · al quoz</span></div></div>
+    <div class="b"><div class="ph olive"><span class="ph-tag">hands at work</span></div></div>
+    <div class="quote">
+      "We arrange the way Dubai itself does — quietly, generously, all year."
+      <small>— Noor, founder · No.21 Blooms</small>
+    </div>
+  </div>
+  <div>
+    <div class="eyebrow">— From the atelier —</div>
+    <h2>A small studio<br>in <em>Al Quoz</em>.</h2>
+    <p>No.21 Blooms is six pairs of hands, a cool room, and a long table. We compose to order, twice daily — Sat through Thu — and we never use a foam base or a plastic sleeve.</p>
+    <p>Stems are flown in overnight from fourteen growers — Holland, Kenya, Italy, and a small farm just outside Sharjah. What doesn't sell that day is given to the school next door.</p>
+    <div class="sign">— Noor, founder.</div>
+  </div>
+</section>
+
+<!-- ============ PRESS ============ -->
+<section class="press">
+  <div class="eyebrow">— In the press —</div>
+  <h2>Quietly <em>noticed.</em></h2>
+  <div class="logos">
+    <div>Vogue Arabia<small>March 2026</small></div>
+    <div>Condé Nast Traveller<small>Feb 2026</small></div>
+    <div>Harper's Bazaar<small>April 2026</small></div>
+    <div>BURO 24/7<small>Jan 2026</small></div>
+    <div>Time Out Dubai<small>2025</small></div>
+  </div>
+  <div class="quotes">
+    <div class="quote-card">
+      <span class="mark">"</span>
+      <p>The most considered bouquets currently leaving a Dubai atelier — sculptural without ever feeling severe.</p>
+      <span class="src">— Vogue Arabia · The Florist Issue</span>
+    </div>
+    <div class="quote-card">
+      <span class="mark">"</span>
+      <p>No.21 Blooms has done for flowers in Dubai what Aesop did for soap: stripped away the noise and made you notice the object.</p>
+      <span class="src">— Condé Nast Traveller</span>
+    </div>
+    <div class="quote-card">
+      <span class="mark">"</span>
+      <p>If quiet luxury has a perfume, it smells like a Tahani bouquet on the kitchen counter at 6pm.</p>
+      <span class="src">— Harper's Bazaar Arabia</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <h2 class="foot-headline">Until <em>sundown.</em></h2>
+  <div class="foot-grid">
+    <div>
+      <h4>Letters from the atelier</h4>
+      <p>One short note a month — what's in season, what we're reading, the occasional recipe. No promotions.</p>
+      <div class="news">
+        <input placeholder="your@email" />
+        <button>Subscribe →</button>
+      </div>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li>Bouquets</li>
+        <li>Occasions</li>
+        <li>Subscriptions</li>
+        <li>Corporate</li>
+        <li>Weddings</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Atelier</h4>
+      <ul>
+        <li>Our story</li>
+        <li>Workshops</li>
+        <li>Sourcing</li>
+        <li>Journal</li>
+        <li>Press</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <ul>
+        <li>Warehouse 14, Alserkal Avenue</li>
+        <li>Al Quoz 1, Dubai</li>
+        <li>+971 4 000 0021</li>
+        <li>hello@21bloom.ae</li>
+        <li>Sat–Thu · 10–19</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 No.21 Blooms Atelier · Dubai</span>
+    <span>Concept 03 · Desert</span>
+  </div>
 </footer>
+
+<script>
+/* Desert · motion runtime — reveals + spring-damped hero parallax.
+   The CSS does all the heavy lifting; this script only assigns
+   data-attributes and lerps two CSS variables. */
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // 1. Auto-tag reveal targets — kept in one place so motion
+  //    behavior is auditable without scanning markup.
+  const REVEAL = [
+    '.featured h2', '.featured p', '.featured .specs', '.featured .price-row',
+    '.featured .inner > div:first-child .cta-row',
+    '.best-head h2', '.best-grid .pcard',
+    '.occ-head h2', '.occ-head .aside', '.occ-rail .occ-card',
+    '.concierge h3', '.concierge p', '.concierge .wa',
+    '.story h2', '.story p', '.story .sign',
+    '.press h2', '.press .logos > div', '.quotes .quote-card',
+    '.foot-headline'
+  ];
+  const REVEAL_CLIP = [
+    '.featured .img-stack',
+    '.concierge .visual',
+    '.story .visual'
+  ];
+  REVEAL.forEach(sel => document.querySelectorAll(sel).forEach(el =>
+    el.setAttribute('data-reveal', '')
+  ));
+  REVEAL_CLIP.forEach(sel => document.querySelectorAll(sel).forEach(el =>
+    el.setAttribute('data-reveal-clip', '')
+  ));
+
+  // 2. IntersectionObserver — flip the attribute to "in"; CSS does the rest.
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      if (e.target.hasAttribute('data-reveal'))      e.target.setAttribute('data-reveal', 'in');
+      if (e.target.hasAttribute('data-reveal-clip')) e.target.setAttribute('data-reveal-clip', 'in');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -80px 0px', threshold: 0.05 });
+
+  document.querySelectorAll('[data-reveal], [data-reveal-clip]')
+    .forEach(el => io.observe(el));
+
+  // 3. Hero parallax — two input channels, one element.
+  //    a) Spring-damped mouse offset (pointer-fine only) → --px / --py
+  //    b) Raw scroll position (all devices)             → --sy
+  //    On mobile, CSS resets translate on .a/.b inside the responsive
+  //    rules so the parallax effectively has no visual effect.
+  const imgs = document.querySelector('.hero-duo .imgs');
+  const hero = document.querySelector('.hero-duo');
+
+  if (imgs){
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches){
+      let tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+      const tick = () => {
+        cx += (tx - cx) * 0.08;
+        cy += (ty - cy) * 0.08;
+        imgs.style.setProperty('--px', cx.toFixed(3));
+        imgs.style.setProperty('--py', cy.toFixed(3));
+        if (Math.abs(tx - cx) > 0.0008 || Math.abs(ty - cy) > 0.0008){
+          raf = requestAnimationFrame(tick);
+        } else {
+          raf = null;
+        }
+      };
+      window.addEventListener('mousemove', (e) => {
+        const r = (hero || imgs).getBoundingClientRect();
+        if (e.clientY < r.top - 200 || e.clientY > r.bottom + 200) return;
+        const ox = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+        const oy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+        tx = Math.max(-1, Math.min(1, ox));
+        ty = Math.max(-1, Math.min(1, oy));
+        if (raf === null) raf = requestAnimationFrame(tick);
+      }, { passive: true });
+      window.addEventListener('mouseleave', () => {
+        tx = 0; ty = 0;
+        if (raf === null) raf = requestAnimationFrame(tick);
+      });
+    }
+
+    let scrollRaf = null;
+    const writeScroll = () => {
+      scrollRaf = null;
+      const r = hero.getBoundingClientRect();
+      if (r.bottom < -200) return;
+      imgs.style.setProperty('--sy', Math.max(0, -r.top).toFixed(1));
+    };
+    window.addEventListener('scroll', () => {
+      if (scrollRaf === null) scrollRaf = requestAnimationFrame(writeScroll);
+    }, { passive: true });
+    writeScroll();
+  }
+})();
+</script>
 
 </body>
 </html>
