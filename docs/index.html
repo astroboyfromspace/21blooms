@@ -105,7 +105,9 @@
   }
   .btn.primary{background:var(--umber);color:var(--cream);border-color:var(--umber)}
   .btn.terra{background:var(--terra);color:var(--cream);border-color:var(--terra)}
-  .btn.ghost{color:var(--umber)}
+  /* Solid bg matching the section so the decorative bg-media (which
+     uses mix-blend-mode: screen) doesn't bleed through the button. */
+  .btn.ghost{color:var(--umber);background:var(--sand-0)}
 
   /* ============ HERO ============ */
   .hero{padding:0 40px;position:relative}
@@ -116,44 +118,48 @@
   .hero-duo,.hero-circle,.hero-postcard{display:none}
 
   /* A · Duo — type left, layered images right with offset */
-  .hero-duo{
-    grid-template-columns:1.05fr 1fr;gap:64px;
-    padding:80px 0 100px;align-items:center;position:relative;
-  }
-  .hero-duo .eyebrow{
+  /* Eyebrow lives at the top of the hero, centered vertically between
+     the navbar and the h1 via equal top/bottom padding. */
+  .hero > .eyebrow{
     display:inline-flex;align-items:center;gap:14px;
     font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--umber-3);
-    margin-bottom:34px;
+    padding:48px 0;
   }
-  .hero-duo .eyebrow .glyph{
+  .hero > .eyebrow .glyph{
     width:38px;height:38px;border-radius:50%;background:var(--terra);
     color:var(--cream);display:grid;place-items:center;font-family:var(--display);font-size:18px;
   }
+
+  .hero-duo{
+    grid-template-columns:1.05fr 1fr;gap:64px;
+    padding:0 0 100px;align-items:center;position:relative;
+  }
   .hero-duo h1{
     font-family:var(--display);
-    font-size:124px;line-height:.94;letter-spacing:-.012em;margin:0 0 28px;font-weight:400;
+    font-size:99px;line-height:.94;letter-spacing:-.012em;margin:0 0 24px;font-weight:400;
   }
   .hero-duo h1 em{font-style:italic;color:var(--terra)}
   .hero-duo h1 .ul{
     display:inline-block;border-bottom:3px solid var(--terra);padding-bottom:6px;line-height:.85;
   }
-  .hero-duo p.lede{font-size:18px;line-height:1.55;color:var(--umber-2);max-width:48ch;margin:0 0 36px}
-  .hero-duo .cta-row{display:flex;gap:14px;align-items:center;margin-bottom:48px}
+  .hero-duo p.lede{font-size:14.4px;line-height:1.55;color:var(--umber-2);max-width:48ch;margin:0 0 30px}
+  .hero-duo .cta-row{display:flex;gap:14px;align-items:center;margin-bottom:40px}
   .hero-duo .meta-row{
     display:grid;grid-template-columns:repeat(3,auto);gap:40px;
-    border-top:1px solid var(--rule);padding-top:24px;max-width:560px;
+    border-top:1px solid var(--rule);padding-top:20px;max-width:560px;
   }
   .hero-duo .meta-row > div{display:flex;flex-direction:column;gap:4px}
+  .hero-duo .meta-row > .m-only{display:none}  /* shown on mobile only */
   .hero-duo .meta-row .l{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber-3)}
-  .hero-duo .meta-row .v{font-family:var(--display);font-size:24px;color:var(--umber);line-height:1}
+  .hero-duo .meta-row .v{font-family:var(--display);font-size:19px;color:var(--umber);line-height:1}
 
   .hero-duo .imgs{position:relative;height:620px}
   .hero-duo .imgs .a{
-    position:absolute;left:0;top:0;width:78%;aspect-ratio:4/5;
+    position:absolute;left:0;top:0;width:78%;aspect-ratio:4/5;max-height:670px;max-width:536px;
     box-shadow:0 30px 80px -30px rgba(58,42,31,.4);overflow:hidden;
   }
   .hero-duo .imgs .b{
-    position:absolute;right:0;bottom:0;width:54%;aspect-ratio:1/1.05;
+    position:absolute;right:0;bottom:0;width:54%;aspect-ratio:1/1.05;max-height:380px;max-width:362px;
     box-shadow:0 30px 80px -30px rgba(58,42,31,.4);overflow:hidden;
     border:6px solid var(--cream);
   }
@@ -265,7 +271,7 @@
   .featured .price-row .aed{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--umber-3)}
   .featured .price-row .num{font-family:var(--display);font-size:54px;line-height:1;color:var(--terra)}
 
-  .featured .img-stack{position:relative;aspect-ratio:4/5}
+  .featured .img-stack{position:relative;aspect-ratio:4/5;width:100%;max-height:670px;max-width:536px;justify-self:center}
   .featured .img-stack .a{position:absolute;inset:0;border:1px solid var(--rule);box-shadow:0 30px 80px -30px rgba(58,42,31,.45);overflow:hidden}
   .featured .img-stack .a .ph{position:absolute;inset:0}
   .featured .img-stack .a img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
@@ -460,6 +466,15 @@
   .foot-grid .news button{color:var(--terra);font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
   .foot-bottom{margin-top:48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(251,245,233,.5);position:relative}
 
+  /* Cap horizontal content width on ultra-wide screens — grows side
+     gutters past the default 40px once the viewport exceeds the cap,
+     keeping section backgrounds full-bleed. Mobile media queries below
+     use the `padding` shorthand which resets this, so small screens
+     keep their tighter gutters. */
+  .nav, .hero, .strip, .featured, .occasions, .best, .concierge, .story, .press, footer{
+    padding-inline: max(40px, calc((100vw - 1480px) / 2));
+  }
+
   /* Mobile nav toggle (hidden on desktop) */
   .nav-toggle{display:none;width:42px;height:42px;border:1px solid var(--rule);border-radius:50%;align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer}
   .nav-toggle span{display:block;width:18px;height:1.5px;background:var(--umber)}
@@ -581,14 +596,14 @@
     from{ opacity: 0; translate: 0 24px; scale: 0.99; }
     to  { opacity: 1; translate: 0 0;    scale: 1; }
   }
-  body[data-hero="duo"] .hero-duo .eyebrow,
+  body[data-hero="duo"] .hero > .eyebrow,
   body[data-hero="duo"] .hero-duo h1,
   body[data-hero="duo"] .hero-duo .lede,
   body[data-hero="duo"] .hero-duo .cta-row,
   body[data-hero="duo"] .hero-duo .meta-row{
     animation: hero-rise 820ms var(--ease-out) both;
   }
-  body[data-hero="duo"] .hero-duo .eyebrow{ animation-delay:  60ms; }
+  body[data-hero="duo"] .hero > .eyebrow{ animation-delay:  60ms; }
   body[data-hero="duo"] .hero-duo h1      { animation-delay: 120ms; }
   body[data-hero="duo"] .hero-duo .lede   { animation-delay: 260ms; }
   body[data-hero="duo"] .hero-duo .cta-row{ animation-delay: 360ms; }
@@ -681,7 +696,12 @@
     .brand img{height:48px}
 
     /* Hero · Duo */
-    .hero{padding:0 24px}
+    .hero{
+      padding:0 24px;--hero-gutter:24px;
+      /* Branch is narrower at this breakpoint — tighten the gap
+         between the two copies so they don't drift apart visually. */
+      --branch2-offset:160px;
+    }
     .hero-duo{grid-template-columns:1fr 1fr;gap:40px;padding:56px 0 72px}
     .hero-duo h1{font-size:84px}
     .hero-duo p.lede{font-size:16px;margin-bottom:28px}
@@ -702,7 +722,7 @@
     .hero-postcard .card{padding:32px}
     .hero-postcard h1{font-size:60px}
 
-    .strip{padding:16px 24px;gap:24px;flex-wrap:wrap;font-size:10px}
+    .strip{position:relative; z-index:10,padding:16px 24px;gap:24px;flex-wrap:wrap;font-size:10px}
 
     .featured{padding:88px 24px}
     .featured .inner{gap:48px}
@@ -739,54 +759,123 @@
   }
 
   /* ============================================ */
+  /* SMALL TABLET  721–964px                       */
+  /* The pill + brand + 5 links + Sign in + Bag    */
+  /* don't fit comfortably here. Drop the pill and */
+  /* tighten the rest before the mobile menu kicks */
+  /* in at 720px.                                  */
+  /* ============================================ */
+  @media (max-width: 964px) and (min-width: 721px){
+    .nav{gap:18px;padding:18px 20px 16px}
+    .nav .links{gap:18px;font-size:12.5px}
+    .nav .right{gap:14px;font-size:12.5px}
+    .nav .right .pill{display:none}
+    .brand img{height:44px}
+  }
+
+  /* ============================================ */
   /* MOBILE  ≤ 720px                              */
   /* ============================================ */
   @media (max-width: 720px){
     body{font-size:14.5px}
 
-    /* Nav: brand left, toggle right */
-    .nav{grid-template-columns:1fr auto;gap:12px;padding:16px 18px 14px}
-    .nav .links{
-      display:none;
-      grid-column:1 / -1;
-      flex-direction:column;align-items:flex-start;gap:14px;
-      padding:8px 0 6px;font-size:15px;
+    /* Nav: brand left, toggle right.  The menu opens as a full-bleed
+       cream sheet that drops in below the header — the header itself
+       stays put so the hamburger can morph into a close button. */
+    .nav{
+      grid-template-columns:1fr auto;gap:12px;padding:16px 18px 14px;
+      position:relative;z-index:60;background:var(--cream);
     }
-    body[data-menu="open"] .nav .links{display:flex}
+    .nav .links{
+      /* Override desktop justify-self:center; we want a true overlay. */
+      justify-self:stretch;
+      position:fixed;left:0;right:0;top:71px;bottom:0;
+      z-index:55;background:var(--cream);
+      display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;
+      gap:6px;padding:40px 24px 32px;
+      font-family:var(--display);font-size:46px;line-height:1.04;letter-spacing:-.012em;
+      color:var(--umber);
+      opacity:0;visibility:hidden;transform:translateY(-8px);
+      transition:opacity .3s cubic-bezier(.22,.61,.36,1),
+                 transform .35s cubic-bezier(.22,.61,.36,1),
+                 visibility 0s linear .35s;
+      overflow-y:auto;
+    }
+    .nav .links a{display:block;padding:8px 0;width:100%;border-bottom:1px solid var(--rule)}
+    .nav .links a:last-child{border-bottom:0}
+    body[data-menu="open"] .nav .links{
+      opacity:1;visibility:visible;transform:none;
+      transition:opacity .3s cubic-bezier(.22,.61,.36,1),
+                 transform .35s cubic-bezier(.22,.61,.36,1),
+                 visibility 0s linear 0s;
+    }
+    body[data-menu="open"]{overflow:hidden}
     .nav .right{gap:14px;font-size:12px}
     .nav .right .pill{display:none}
-    .nav-toggle{display:flex}
+    .nav-toggle{display:flex;position:relative;z-index:65}
+    .nav-toggle span{transition:transform .28s cubic-bezier(.22,.61,.36,1), opacity .18s}
+    body[data-menu="open"] .nav-toggle span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+    body[data-menu="open"] .nav-toggle span:nth-child(2){opacity:0}
+    body[data-menu="open"] .nav-toggle span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
     .brand img{height:40px}
 
     /* Hero · Duo — stack */
-    .hero{padding:0 18px}
-    .hero-duo{grid-template-columns:1fr;gap:36px;padding:32px 0 56px}
-    .hero-duo .eyebrow{margin-bottom:20px;font-size:10px;letter-spacing:.18em}
-    .hero-duo .eyebrow .glyph{width:32px;height:32px;font-size:15px}
+    .hero{
+      padding:0 18px;--hero-gutter:18px;
+      /* On mobile the hero stacks and the video is much narrower —
+         pull the two copies almost together so the foliage still
+         reads as one band, not two separated branches. */
+      --branch2-offset:80px;
+    }
+    /* Stem base anchors at hero bottom = .strip top on mobile. The
+       horizontal mobile overrides for .bg-media live in their own
+       media block *after* the base rules (see further down) so that
+       source-order beats the base specificity. */
+    .hero{ --branch-y: 0px; }
+    .hero-duo{grid-template-columns:1fr;gap:36px;padding:0 0 56px}
+    .hero > .eyebrow{padding:24px 0;font-size:10px;letter-spacing:.18em}
+    .hero > .eyebrow .glyph{width:32px;height:32px;font-size:15px}
     .hero-duo h1{font-size:54px;margin-bottom:20px}
     .hero-duo h1 .ul{border-bottom-width:2px;padding-bottom:3px}
     .hero-duo p.lede{font-size:15.5px;margin-bottom:24px}
     .hero-duo .cta-row{flex-wrap:wrap;gap:10px;margin-bottom:32px}
     .btn{padding:12px 18px;font-size:12.5px}
+    /* Meta-row becomes a clean 2×2: cut-off / compositions over
+       concierge / bouquet-of-the-week.  The 4th slot replaces the
+       visual stamp that's been removed from the image stack below. */
     .hero-duo .meta-row{grid-template-columns:1fr 1fr;gap:18px 24px;padding-top:18px;max-width:none}
     .hero-duo .meta-row .v{font-size:18px}
-    .hero-duo .imgs{height:auto;display:grid;grid-template-columns:5fr 4fr;grid-template-rows:auto auto;gap:12px;position:relative}
-    .hero-duo .imgs .a,.hero-duo .imgs .b{position:relative;width:100%;left:auto;right:auto;top:auto;bottom:auto;aspect-ratio:4/5;box-shadow:0 16px 40px -20px rgba(58,42,31,.4)}
-    .hero-duo .imgs .a{grid-column:1 / 2;grid-row:1 / 3}
-    .hero-duo .imgs .b{grid-column:2 / 3;grid-row:2 / 3;aspect-ratio:1/1.05}
-    .hero-duo .imgs .stamp{
-      grid-column:2 / 3;grid-row:1 / 2;
-      position:relative;width:auto;height:auto;
-      transform:none;border-radius:8px;
-      padding:18px 14px;font-size:9px;
-      align-self:start;
+    .hero-duo .meta-row > .m-only{display:flex}
+
+    /* Image composition on mobile: the main bouquet shot fills the
+       width; the detail shot becomes a smaller card that sits low and
+       to the right, overlapping the bottom-right corner of the main
+       image and breaking out below it.  A cream frame around the
+       overlay separates the two visually and echoes the page surface. */
+    .hero-duo .imgs{
+      height:auto;display:block;position:relative;
+      padding-bottom:74px;            /* breathing room for the overhang */
     }
-    .hero-duo .imgs .stamp b{font-size:22px}
-    /* Motion: hero reflows to a grid here — the absolute-overlap parallax
-       and stamp drift don't make sense in the stacked layout. */
+    .hero-duo .imgs .a{
+      position:relative;left:auto;top:auto;right:auto;bottom:auto;
+      width:100%;aspect-ratio:4/5;
+      box-shadow:0 24px 56px -22px rgba(58,42,31,.45);
+    }
+    .hero-duo .imgs .b{
+      position:absolute;left:auto;top:auto;
+      right:6px;bottom:0;
+      width:45%;aspect-ratio:4/5;     /* 20% smaller than its sibling-balance */
+      border:4px solid var(--cream);
+      box-shadow:0 26px 52px -18px rgba(58,42,31,.55);
+      transform:rotate(2.5deg);       /* subtle tilt — feels hand-placed */
+      transform-origin:center;
+    }
+    .hero-duo .imgs .stamp{display:none}
+    /* Motion: the absolute-overlap parallax is preserved by intent
+       here — the two images sit in relation to each other, so the
+       desktop translate would feel wrong.  Reset it. */
     .hero-duo .imgs .a,
     .hero-duo .imgs .b{ translate: 0; }
-    .hero-duo .imgs .stamp{ animation: none; }
 
     /* Hero · Circle */
     .hero-circle{padding:32px 0 48px}
@@ -915,6 +1004,67 @@
       animation: none !important;
     }
   }
+
+  /* Decorative bottom media — a <video> that grows out of the meta-row.
+     - --branch-y is the distance from .hero's bottom to .meta-row's
+       top edge, written by JS so it stays correct at any viewport size.
+     - --branch-pad is the % of the *clip's* height that is empty space
+       below the stem. translateY(--branch-pad) slides the video down by
+       that fraction of its own rendered height, so the visible stem base
+       lands exactly on the anchor line. Tweak the % if the source video
+       changes.
+     mix-blend-mode: screen drops the pure-black background (screen of 0
+     = no-op), leaving just the foliage on the page. */
+  .hero{
+    --branch-pad: 32%;
+    /* How far the mirrored second branch sits above the first. */
+    --branch2-offset: 220px;
+    /* Mirrors the section's padding-inline so the absolutely positioned
+       videos align with the content cap on ultra-wide screens. For
+       abs-positioned children the containing block is the parent's
+       padding box (content + padding), so left:0; width:100% would
+       otherwise stretch them across the wide gutters. Mobile breakpoints
+       below narrow this back down to match their padding. */
+    --hero-gutter: max(40px, calc((100vw - 1480px) / 2));
+  }
+  .hero .bg-media{
+    position:absolute;
+    /* Anchored to the LEFT gutter only, growing rightward at intrinsic
+       width. max-width caps it at the content area so it never bleeds
+       past the opposite gutter on narrow screens. */
+    left: var(--hero-gutter);
+    right: auto;
+    bottom: var(--branch-y, 150px);
+    transform: translateY(var(--branch-pad));
+    width: auto;
+    max-width: calc(100% - var(--hero-gutter) * 2);
+    height:auto;
+    pointer-events:none;
+    z-index:0;
+    mix-blend-mode:screen;
+    opacity:.9;
+    user-select:none;
+    -webkit-user-drag:none;
+  }
+  /* Mirrored copy, anchored to the RIGHT gutter and pinned to the top. */
+  .hero .bg-media.flip{
+    left: auto;
+    right: var(--hero-gutter);
+    top: 0;
+    bottom: auto;
+    transform: scaleX(-1);
+  }
+  /* Keep hero content above the decorative layer. */
+  .hero > *:not(.bg-media){position:relative;z-index:1}
+
+  /* Mobile horizontal overrides — placed AFTER the base .bg-media
+     rules so source order wins at equal specificity. Bottom branch
+     flush against the left edge; top branch hangs 120px past the
+     right edge so its leaves spill in from the right. */
+  @media (max-width: 720px){
+    .hero .bg-media      { left: 0;    right: auto;   }
+    .hero .bg-media.flip { left: auto; right: -120px; }
+  }
 </style>
 </head>
 <body data-palette="oasis" data-type="presque" data-hero="duo">
@@ -923,7 +1073,7 @@
   <a class="brand" href="#">
     <img src="images/logo.png" alt="No.21 Blooms · Dubai" />
   </a>
-  <nav class="links">
+  <nav class="links" onclick="if(event.target.tagName==='A')document.body.dataset.menu='closed'">
     <a href="#">Bouquets</a>
     <a href="#">Occasions</a>
     <a href="#">Subscriptions</a>
@@ -943,10 +1093,24 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
 
+  <!-- Decorative bottom media. Black background dropped via
+       mix-blend-mode: screen in CSS. Plays once, muted, no loop.
+       A second copy, mirrored horizontally and offset upward, layers
+       above to form a fuller foliage band. -->
+  <video class="bg-media" src="bg-sample.mp4"
+         autoplay muted playsinline preload="auto"
+         aria-hidden="true"></video>
+  <video class="bg-media flip" src="bg-sample.mp4"
+         autoplay muted playsinline preload="auto"
+         aria-hidden="true"></video>
+
+  <!-- Eyebrow promoted out of the left column so it sits centered
+       between the navbar and the hero copy. -->
+  <div class="eyebrow"><span class="glyph">❋</span>Volume XXI · Spring '26 in Dubai</div>
+
   <!-- A · Duo -->
   <div class="hero-duo">
     <div>
-      <div class="eyebrow"><span class="glyph">❋</span>Volume XXI · Spring '26 in Dubai</div>
       <h1>The garden,<br>delivered <em>before</em><br><span class="ul">sundown.</span></h1>
       <p class="lede">A small atelier in Al Quoz arranging seasonal stems for the table set for two, the apology and the welcome home — across Dubai, the same day.</p>
       <div class="cta-row">
@@ -957,6 +1121,7 @@
         <div><span class="l">Cut-off</span><span class="v">18:00 GST</span></div>
         <div><span class="l">Compositions</span><span class="v">21 in season</span></div>
         <div><span class="l">Concierge</span><span class="v">9 min reply</span></div>
+        <div class="m-only"><span class="l">Bouquet</span><span class="v">Tahani</span></div>
       </div>
     </div>
     <div class="imgs">
@@ -1368,7 +1533,65 @@
   document.querySelectorAll('[data-reveal], [data-reveal-clip]')
     .forEach(el => io.observe(el));
 
-  // 3. Hero parallax — two input channels, one element.
+  // 3. Branch anchor — keep the decorative video's "stem base" aligned
+  //    with the top of the .meta-row line, in any viewport size.
+  //    We measure the gap between the meta-row's top edge and the hero's
+  //    bottom edge, then expose it as --branch-y. The CSS does the rest:
+  //    the video's bottom edge sits at that line, then translateY(% of
+  //    its own height) shifts it down so the empty bottom-padding inside
+  //    the clip falls below the line — leaving the stem on the line.
+  //
+  //    On mobile (≤720px) the layout reflows and the stem instead grows
+  //    from the .strip band that follows the hero, so we clear the inline
+  //    --branch-y and let the CSS rule (0px) take effect.
+  {
+    const heroEl  = document.querySelector('.hero');
+    const metaRow = document.querySelector('.hero-duo .meta-row');
+    const branch  = document.querySelector('.hero .bg-media');
+    const mobileMQ = window.matchMedia('(max-width: 720px)');
+    if (heroEl && metaRow && branch){
+      const writeBranch = () => {
+        if (mobileMQ.matches){
+          heroEl.style.removeProperty('--branch-y');
+          return;
+        }
+        const hr = heroEl.getBoundingClientRect();
+        const mr = metaRow.getBoundingClientRect();
+        heroEl.style.setProperty('--branch-y', (hr.bottom - mr.top).toFixed(1) + 'px');
+      };
+      writeBranch();
+      window.addEventListener('resize', writeBranch);
+      // Recompute after fonts load (display font shifts h1 height,
+      // which shifts the meta-row down).
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(writeBranch);
+      // And once the video reports its intrinsic dimensions, in case
+      // anything in the chain depended on it.
+      branch.addEventListener('loadedmetadata', writeBranch, { once: true });
+    }
+  }
+
+  // 3b. Mobile: the top (flipped) branch hangs 120px off-screen right,
+  //     so the first ~3s of its growth animation are hidden — on a
+  //     small screen you'd see the plant slowly creeping in. Skip the
+  //     playhead past that intro so the foliage starts already grown.
+  //     We do this only when the mobile MQ matches at load time;
+  //     once a video starts playing, jumping it later would be jarring.
+  {
+    const flipVid = document.querySelector('.hero .bg-media.flip');
+    if (flipVid && window.matchMedia('(max-width: 720px)').matches){
+      const SKIP_TO = 2.5; // seconds — past the grow-in animation
+      const seek = () => {
+        // Clamp in case the source is ever shorter than expected.
+        const d = isFinite(flipVid.duration) ? flipVid.duration : SKIP_TO;
+        try { flipVid.currentTime = Math.min(SKIP_TO, Math.max(0, d - 0.05)); } catch (_) {}
+      };
+      // readyState >= 1 = HAVE_METADATA — duration is known, we can seek.
+      if (flipVid.readyState >= 1) seek();
+      else flipVid.addEventListener('loadedmetadata', seek, { once: true });
+    }
+  }
+
+  // 4. Hero parallax — two input channels, one element.
   //    a) Spring-damped mouse offset (pointer-fine only) → --px / --py
   //    b) Raw scroll position (all devices)             → --sy
   //    On mobile, CSS resets translate on .a/.b inside the responsive
